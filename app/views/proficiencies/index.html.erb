@@ -15,13 +15,13 @@
     <td><%= proficiency.skill %></td>
     <td><%= proficiency.expertise_level %></td>
     <td><%= proficiency.years_of_experience %></td>
-    <td><%= link_to 'Show', proficiency %></td>
-    <td><%= link_to 'Edit', edit_proficiency_path(proficiency) %></td>
-    <td><%= link_to 'Destroy', proficiency, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', user_proficiency_path(proficiency) %></td>
+    <td><%= link_to 'Edit', edit_user_proficiency_path(proficiency) %></td>
+    <td><%= link_to 'Destroy', user_proficiency_path(proficiency), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Proficiency', new_proficiency_path %>
+<%= link_to 'New Proficiency', new_user_proficiency_path %>

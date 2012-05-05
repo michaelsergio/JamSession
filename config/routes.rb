@@ -1,10 +1,16 @@
 Jamsession::Application.routes.draw do
 
+  resources :welcomes
+
+  resources :spaces
+
   devise_for :users
 
   resources :users do
     resources :proficiencies
   end
+
+  root :to => 'welcome#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

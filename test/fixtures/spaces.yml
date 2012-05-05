@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  location: MyString
+  hourly_pricing: 9.99
+  description: MyText
+  availability: MyString
+  equipment: MyString
+  capacity: MyString
+  size: MyString
+  rooms: MyString
+  about: MyText
+
+two:
+  name: MyString
+  location: MyString
+  hourly_pricing: 9.99
+  description: MyText
+  availability: MyString
+  equipment: MyString
+  capacity: MyString
+  size: MyString
+  rooms: MyString
+  about: MyText

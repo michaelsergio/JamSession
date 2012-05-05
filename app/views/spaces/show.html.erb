@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @space.name %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @space.location %>
+</p>
+
+<p>
+  <b>Hourly pricing:</b>
+  <%= @space.hourly_pricing %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @space.description %>
+</p>
+
+<p>
+  <b>Availability:</b>
+  <%= @space.availability %>
+</p>
+
+<p>
+  <b>Equipment:</b>
+  <%= @space.equipment %>
+</p>
+
+<p>
+  <b>Capacity:</b>
+  <%= @space.capacity %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= @space.size %>
+</p>
+
+<p>
+  <b>Rooms:</b>
+  <%= @space.rooms %>
+</p>
+
+<p>
+  <b>About:</b>
+  <%= @space.about %>
+</p>
+
+
+<%= link_to 'Edit', edit_space_path(@space) %> |
+<%= link_to 'Back', spaces_path %>
