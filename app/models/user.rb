@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :proficiencies
   has_attached_file :profile_picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   attr_accessible  :profile_picture
+  acts_as_messageable
+
 
   # attr_accessible :title, :body
 end
