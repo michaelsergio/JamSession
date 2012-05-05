@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  skill: MyString
+  expertise_level: MyString
+  years_of_experience: 
+
+two:
+  skill: MyString
+  expertise_level: MyString
+  years_of_experience: 

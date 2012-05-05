@@ -1,0 +1,29 @@
+<%= form_for(@proficiency) do |f| %>
+  <% if @proficiency.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@proficiency.errors.count, "error") %> prohibited this proficiency from being saved:</h2>
+
+      <ul>
+      <% @proficiency.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :skill %><br />
+    <%= f.text_field :skill %>
+  </div>
+  <div class="field">
+    <%= f.label :expertise_level %><br />
+    <%= f.text_field :expertise_level %>
+  </div>
+  <div class="field">
+    <%= f.label :years_of_experience %><br />
+    <%= f.text_field :years_of_experience %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
