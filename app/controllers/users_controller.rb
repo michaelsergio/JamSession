@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, except: [:update]
+  before_filter :authenticate_user!, except: [:update, :search]
   # GET /users
   # GET /users.json
   def index
@@ -51,9 +51,9 @@ class UsersController < ApplicationController
   end
 
   def search 
-    @users = User.by_styles(params[styles]).
-                  by_instruments(params[instruments]).
+    @users = User.by_styles(params[:styles]).
+                  by_instruments(params[:instruments]).
+                  by_location(params[:location]).
                   all
-    #currently ignore location
   end
 end

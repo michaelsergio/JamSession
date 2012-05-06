@@ -5,16 +5,16 @@ class Space < ActiveRecord::Base
   belongs_to :owner
   has_many :reviews
 
-  scope :by_max_price, lambda do |price|
+  scope :by_max_price, (lambda do |price|
     Space.where('space.hourly_pricing <= ?', price) unless price.nil?
-  end
+  end)
 
-  scope :by_services, lambda do |services|
+  scope :by_services, (lambda do |services|
     Space.where(services: services) unless services.nil? or services.empty?
-  end
+  end)
 
-  scope :by_min_people, lambda do |minimum|
+  scope :by_min_people, (lambda do |minimum|
     Space.where('space.capacity < num_people') unless minimum.nil?
-  end
+  end)
 
 end

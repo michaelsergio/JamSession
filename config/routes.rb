@@ -13,7 +13,7 @@ Jamsession::Application.routes.draw do
 
   resources :users do
     resources :proficiencies
-    member do 
+    collection do 
       get 'search'
     end
   end

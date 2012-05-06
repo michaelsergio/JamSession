@@ -1,5 +1,5 @@
 class SpacesController < ApplicationController
-  before_filter :authenticate_user!, except: [:show]
+  before_filter :authenticate_user!, except: [:show, :search]
   # GET /spaces
   # GET /spaces.json
   def index
