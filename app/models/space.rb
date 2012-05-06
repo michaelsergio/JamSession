@@ -3,6 +3,7 @@ class Space < ActiveRecord::Base
   has_attached_file :profile_picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   attr_accessible :profile_picture
   belongs_to :owner
+  has_many :reviews
 
   scope :by_max_price, lambda do |price|
     Space.where('space.hourly_pricing <= ?', price) unless price.nil?

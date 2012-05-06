@@ -2,6 +2,9 @@ Jamsession::Application.routes.draw do
 
   resources :spaces do 
     member do 
+      post 'post_review'
+    end
+    collection do
       get 'search'
     end
   end
