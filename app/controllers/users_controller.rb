@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :authenticate_user!, only: [:update]
   # GET /users
   # GET /users.json
   def index
@@ -30,6 +31,10 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
+
+    if current_user != @user.owner
+      render :file => "public/422.html", status:422 and return
+    end
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
