@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120506001954) do
+ActiveRecord::Schema.define(:version => 20120506010256) do
 
   create_table "messages", :force => true do |t|
     t.string   "topic"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(:version => 20120506001954) do
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.integer  "user_id"
+  end
+
+  create_table "reviews", :force => true do |t|
+    t.text     "detail"
+    t.integer  "rating"
+    t.integer  "posted_by"
+    t.integer  "space_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "spaces", :force => true do |t|

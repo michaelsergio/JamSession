@@ -102,4 +102,21 @@ class SpacesController < ApplicationController
                   by_min_people(params[min_people]).
                   all
   end
+
+  def post_review
+    @space = Space.find(params[:id])
+    review = Review.new(params[:review])
+    review.posted_by = current_user
+    review.belongs_to(space)
+    respond_to do |format|
+      if review.save
+        format.html { redirect_to @space, notice: 'Review was successfully created.' }
+        format.json { render json: @space, status: :created, location: @space }
+      else
+        format.html { render action: "get" }
+        format.json { render json: review.errors, status: :unprocessable_entity }
+      end
+
+  end
+
 end
