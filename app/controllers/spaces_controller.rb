@@ -1,4 +1,5 @@
 class SpacesController < ApplicationController
+  before_filter :authenticate_user!, except: [:show]
   # GET /spaces
   # GET /spaces.json
   def index
@@ -41,6 +42,7 @@ class SpacesController < ApplicationController
   # POST /spaces.json
   def create
     @space = Space.new(params[:space])
+    @space.owner = current_user
 
     respond_to do |format|
       if @space.save
@@ -57,6 +59,10 @@ class SpacesController < ApplicationController
   # PUT /spaces/1.json
   def update
     @space = Space.find(params[:id])
+    
+    if current_user != @space.owner
+      render :file => "public/422.html", status:422 and return
+    end
 
     respond_to do |format|
       if @space.update_attributes(params[:space])
@@ -73,6 +79,11 @@ class SpacesController < ApplicationController
   # DELETE /spaces/1.json
   def destroy
     @space = Space.find(params[:id])
+
+    if current_user != @space.owner
+      render :file => "public/422.html", status:422 and return
+    end
+
     @space.destroy
 
     respond_to do |format|

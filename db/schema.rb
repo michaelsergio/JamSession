@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120505203548) do
+ActiveRecord::Schema.define(:version => 20120506001954) do
 
   create_table "messages", :force => true do |t|
     t.string   "topic"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20120505203548) do
     t.string   "profile_picture_content_type"
     t.integer  "profile_picture_file_size"
     t.datetime "profile_picture_updated_at"
+    t.integer  "owner_id"
   end
 
   create_table "users", :force => true do |t|
