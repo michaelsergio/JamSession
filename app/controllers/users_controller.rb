@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, only: [:update]
+  before_filter :authenticate_user!, except: [:update]
   # GET /users
   # GET /users.json
   def index
@@ -25,6 +25,9 @@ class UsersController < ApplicationController
   # GET /user/1/edit
   def edit
     @user = User.find(params[:id])
+    if current_user != @user
+      render :file => "public/422.html", status:422 and return
+    end
   end
 
   # PUT /users/1

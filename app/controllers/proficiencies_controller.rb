@@ -1,4 +1,5 @@
 class ProficienciesController < ApplicationController
+  before_filter :authenticate_user!, except: [:show]
   # GET /proficiencies
   # GET /proficiencies.json
   def index
@@ -35,12 +36,16 @@ class ProficienciesController < ApplicationController
   # GET /proficiencies/1/edit
   def edit
     @proficiency = Proficiency.find(params[:id])
+    if current_user != @proficiency.user
+      render :file => "public/422.html", status:422 and return
+    end
   end
 
   # POST /proficiencies
   # POST /proficiencies.json
   def create
     @proficiency = Proficiency.new(params[:proficiency])
+    @proficiency.user = current_user
 
     respond_to do |format|
       if @proficiency.save
@@ -57,6 +62,9 @@ class ProficienciesController < ApplicationController
   # PUT /proficiencies/1.json
   def update
     @proficiency = Proficiency.find(params[:id])
+    if current_user != @proficiency.user
+      render :file => "public/422.html", status:422 and return
+    end
 
     respond_to do |format|
       if @proficiency.update_attributes(params[:proficiency])
@@ -73,6 +81,11 @@ class ProficienciesController < ApplicationController
   # DELETE /proficiencies/1.json
   def destroy
     @proficiency = Proficiency.find(params[:id])
+
+    if current_user != @proficiency.user
+      render :file => "public/422.html", status:422 and return
+    end
+
     @proficiency.destroy
 
     respond_to do |format|

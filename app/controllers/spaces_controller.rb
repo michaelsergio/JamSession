@@ -36,6 +36,9 @@ class SpacesController < ApplicationController
   # GET /spaces/1/edit
   def edit
     @space = Space.find(params[:id])
+    if current_user != @space.owner
+      render :file => "public/422.html", status:422 and return
+    end
   end
 
   # POST /spaces
