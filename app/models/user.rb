@@ -12,5 +12,12 @@ class User < ActiveRecord::Base
   attr_accessible  :profile_picture
   acts_as_messageable
 
+  scope :by_instruments, lambda do |instruments|
+    User.where('user.proficiencies.skill in ?', instruments) unless instruments.nil? or instruments.empty?
+  end
+
+  scope :by_styles, lambda do |styles|
+    User.where('user.proficiencies.skill in ?', styles) unless styles.nil? or styles.empty?
+  end
 
 end

@@ -51,10 +51,9 @@ class UsersController < ApplicationController
   end
 
   def search 
-    @users = User.    
-    # TODO write this
+    @users = User.by_styles(params[styles]).
+                  by_instruments(params[instruments]).
+                  all
     #currently ignore location
-#User.by_
-
   end
 end
