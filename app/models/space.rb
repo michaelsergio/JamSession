@@ -3,4 +3,16 @@ class Space < ActiveRecord::Base
   has_attached_file :profile_picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   attr_accessible :profile_picture
 
+  scope :by_max_price, lambda do |price|
+    Space.where('space.hourly_pricing <= ?', price) unless price.nil?
+  end
+
+  scope :by_services, lambda do |services|
+    Space.where(services: services) unless services.nil? or services.empty?
+  end
+
+  scope :by_min_people, lambda do |minimum|
+    Space.where('space.capacity < num_people') unless minimum.nil?
+  end
+
 end

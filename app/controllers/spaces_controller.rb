@@ -80,4 +80,12 @@ class SpacesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def search 
+    #currently ignore location
+    @users = User.by_max_price(params[price_limit]).
+                  by_services(params[services]).
+                  by_min_people(params[min_people]).
+                  all
+  end
 end

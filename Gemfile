@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'devise'
 gem 'paperclip'
 gem 'acts-as-messageable'
+gem 'jquery-rails'
 
 
 # Gems used only for assets and not required

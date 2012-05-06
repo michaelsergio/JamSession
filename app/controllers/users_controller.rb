@@ -43,6 +43,9 @@ class UsersController < ApplicationController
   end
 
   def search 
+    # TODO write this
+    #currently ignore location
+#User.by_
 
   end
 end

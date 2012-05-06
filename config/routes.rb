@@ -1,13 +1,18 @@
 Jamsession::Application.routes.draw do
 
-  resources :welcomes
-
-  resources :spaces
+  resources :spaces do 
+    member do 
+      get 'search'
+    end
+  end
 
   devise_for :users
 
   resources :users do
     resources :proficiencies
+    member do 
+      get 'search'
+    end
   end
 
   root :to => 'welcome#index'
