@@ -51,9 +51,11 @@ class UsersController < ApplicationController
   end
 
   def search 
+=begin
     @users = User.by_styles(params[:styles]).
                   by_instruments(params[:instruments]).
                   by_location(params[:location]).
                   all
+=end
   end
 end
