@@ -97,7 +97,7 @@ class SpacesController < ApplicationController
 
   def search 
     #currently ignore location
-    @users = User.by_max_price(params[price_limit]).
+    @space = Space.by_max_price(params[price_limit]).
                   by_services(params[services]).
                   by_min_people(params[min_people]).
                   all
