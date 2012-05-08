@@ -86,7 +86,8 @@ class SpacesController < ApplicationController
   def search 
     @location = params[:location] || request.location
     miles = params[:miles] || 20
-    @spaces = Space.near(@location, miles).
+    @spaces = Space.paginate(page: params[:page], per_page: 25).
+                  near(@location, miles).
                   by_max_price(params[:price_limit]).
                   by_services(params[:services]).
                   by_min_people(params[:min_people]).

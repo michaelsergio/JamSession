@@ -12,6 +12,7 @@ gem 'acts-as-messageable'
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 gem 'geocoder'
+gem 'will_paginate'
 
 
 # Gems used only for assets and not required
