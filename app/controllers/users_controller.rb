@@ -52,6 +52,7 @@ class UsersController < ApplicationController
 
   def search 
     @location = params[:location] || request.location
+
     miles = params[:miles] || 20
     
     @users = User.paginate(page: params[:page], per_page: 25).
