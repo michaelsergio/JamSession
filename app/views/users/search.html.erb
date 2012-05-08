@@ -1,47 +1,45 @@
-<div class="container">
-  <div class="row">
-    <div class="span4">
-      <form class="form-vertical" action="">
-        <p class="filter">Filter</p>
-        <p class="location"></p>
-        <br />
-        <div class="instruments">
-        <label class="checkbox">
-        <input type="checkbox">Guitar
-        </label>
+<div class="row">
+  <div class="span4">
+    <form class="form-vertical" action="">
+      <p class="filter">Filter</p>
+      <p class="location"></p>
+      <br />
+      <div class="instruments">
+      <label class="checkbox">
+      <input type="checkbox">Guitar
+      </label>
 
-        <label class="checkbox">
-        <input type="checkbox">Drums
-        </label>
+      <label class="checkbox">
+      <input type="checkbox">Drums
+      </label>
 
-        <label class="checkbox">
-        <input type="checkbox">Vocals
-        </label>
-        </div>
-        <br />
-        
+      <label class="checkbox">
+      <input type="checkbox">Vocals
+      </label>
+      </div>
+      <br />
+      
 
-        <div class="styles">
-        <label class="checkbox">
-        <input type="checkbox">Rehearsal
-        </label>
-        <label class="checkbox">
-        <input type="checkbox">Recording
-        </label>
-        <label class="checkbox">
-        <input type="checkbox">Mastering
-        </label>
+      <div class="styles">
+      <label class="checkbox">
+      <input type="checkbox">Rehearsal
+      </label>
+      <label class="checkbox">
+      <input type="checkbox">Recording
+      </label>
+      <label class="checkbox">
+      <input type="checkbox">Mastering
+      </label>
 
-        <label class="checkbox">
-        <input type="checkbox">Production
-        </label>
-        
-        </div>
-      </form>
-    </div>
-    <div class="span8">
-    <%= map_tag @location, @users %>
-    </div>
-    <%= will_paginate @spaces %>
+      <label class="checkbox">
+      <input type="checkbox">Production
+      </label>
+      
+      </div>
+    </form>
+  </div>
+  <div class="span8">
+  <%= map_tag @location, @users %>
+  <%= will_paginate @spaces %>
   </div>
 </div>
