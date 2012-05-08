@@ -8,7 +8,7 @@ class Space < ActiveRecord::Base
   after_validation :geocode
 
   scope :by_max_price, (lambda do |price|
-    Space.where('space.hourly_pricing <= ?', price) unless price.nil?
+    Space.where('hourly_pricing <= ?', price) unless price.nil?
   end)
 
   scope :by_services, (lambda do |services|

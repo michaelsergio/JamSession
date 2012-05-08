@@ -51,11 +51,11 @@ class UsersController < ApplicationController
   end
 
   def search 
-=begin
-    @users = User.by_styles(params[:styles]).
+    @location = params[:location] || request.location
+    miles = params[:miles] || 20
+    @users = User.near(@location, miles).
+                  by_styles(params[:styles]).
                   by_instruments(params[:instruments]).
-                  by_location(params[:location]).
                   all
-=end
   end
 end
