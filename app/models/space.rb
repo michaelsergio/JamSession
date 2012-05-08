@@ -2,8 +2,10 @@ class Space < ActiveRecord::Base
   attr_accessible :about, :availability, :capacity, :description, :equipment, :hourly_pricing, :location, :name, :rooms, :size
   has_attached_file :profile_picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   attr_accessible :profile_picture
-  belongs_to :owner
   has_many :reviews
+
+  geocoded_by :location
+  after_validation :geocode
 
   scope :by_max_price, (lambda do |price|
     Space.where('space.hourly_pricing <= ?', price) unless price.nil?

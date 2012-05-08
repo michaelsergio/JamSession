@@ -36,16 +36,12 @@ class SpacesController < ApplicationController
   # GET /spaces/1/edit
   def edit
     @space = Space.find(params[:id])
-    if current_user != @space.owner
-      render :file => "public/422.html", status:422 and return
-    end
   end
 
   # POST /spaces
   # POST /spaces.json
   def create
     @space = Space.new(params[:space])
-    @space.owner = current_user
 
     respond_to do |format|
       if @space.save
@@ -63,10 +59,6 @@ class SpacesController < ApplicationController
   def update
     @space = Space.find(params[:id])
     
-    if current_user != @space.owner
-      render :file => "public/422.html", status:422 and return
-    end
-
     respond_to do |format|
       if @space.update_attributes(params[:space])
         format.html { redirect_to @space, notice: 'Space was successfully updated.' }
@@ -82,10 +74,6 @@ class SpacesController < ApplicationController
   # DELETE /spaces/1.json
   def destroy
     @space = Space.find(params[:id])
-
-    if current_user != @space.owner
-      render :file => "public/422.html", status:422 and return
-    end
 
     @space.destroy
 
@@ -116,7 +104,7 @@ class SpacesController < ApplicationController
         format.html { render action: "get" }
         format.json { render json: review.errors, status: :unprocessable_entity }
       end
-
+    end
   end
 
 end
