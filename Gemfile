@@ -11,6 +11,7 @@ gem 'paperclip'
 gem 'acts-as-messageable'
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
+gem 'geocoder'
 
 
 # Gems used only for assets and not required

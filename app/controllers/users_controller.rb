@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
-    if current_user != @user.owner
+    if current_user != @user
       render :file => "public/422.html", status:422 and return
     end
 
