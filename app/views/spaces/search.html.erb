@@ -7,6 +7,16 @@
 
 
       <br />
+
+      <%= label_tag :services, "Services" %>
+      <% ['rehearsal', 'recording', 'mastering', 'production'].each do |service| %>
+        <%= check_box_tag 'services[]', 
+            service, @services.include?(service), 
+            id: "service_#{service}" %>
+        <%= label_tag "services_#{service}", service.humanize %>
+        <br />
+      <% end %>
+
       <%= submit_tag "Filter"%>
     <% end %>
   </div>
