@@ -1,0 +1,14 @@
+<div class="space">
+  <span class="profile_picture">
+    <%= image_tag space.profile_picture %>
+  </span>
+  <div class="name">
+    <%= space.name %>
+  </div>
+  <div class="location">
+    <%= space.location %>
+  </div>
+  <div class="price">
+    <%= number_to_currency space.hourly_pricing %>
+  </div>
+</div>

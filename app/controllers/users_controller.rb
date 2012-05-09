@@ -55,11 +55,14 @@ class UsersController < ApplicationController
     @styles = params[:styles] || []
 
     @location = params[:location] || request.location
+    if Rails.env.development? and !params[:location]
+      @location = "NYC"
+    end
 
-    miles = params[:miles] || 20
+    @miles = params[:miles] || 20
     
     @users = User.paginate(page: params[:page], per_page: 25).
-                  near(@location, miles).
+                  near(@location, @miles).
                   by_styles(@styles).
                   by_instruments(@instruments).
                   all

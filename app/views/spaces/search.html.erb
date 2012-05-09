@@ -1,7 +1,22 @@
-<% @spaces.each do |space| %>
-  <h2>
-    <%= space.name %>
-  </h2>
+<div class="row">
+  <div class="span3" id="filter">
+    <div class="filter">Filter</div>
+    <%= form_tag(search_users_path, method: :get, class: 'form-vertical') do %>
+      <%= label_tag :location, "Location" %>
+      <%= search_field_tag :location, @location,  placeholder: 'Enter Zip or City' %>
+
+
+      <br />
+      <%= submit_tag "Filter"%>
+    <% end %>
+  </div>
+
+<div class="span9">
   <%= map_tag @location, @spaces %>
+
+  <div class="spaces">
+    <%= render @spaces %>
+  </div>
+
   <%= will_paginate @spaces %>
-<% end %>
+</div>

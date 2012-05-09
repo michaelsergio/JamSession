@@ -7,46 +7,13 @@
 </div>
 
 <div class="artists">
-  Artists
+  <%= link_to image_tag("artists.png"), search_users_path %>
 </div>
 
 <div class="spaces">
-  Spaces
+  <%= link_to image_tag("spaces.png"), search_spaces_path %>
 </div>
 
-
-<div class="search-spaces-options">
-  More options
-  
-  <div class="spaces-more-options">
-    <div>
-      Price <br/>
-      <div class="box">
-        <input type="radio" name="amount" value="Any" /> Any amount<br/>
-        <input type="radio" name="amount" value="Specified" /> No more than $ <input type="input" size="3" name="specific-amount" /> per hour.
-      </div>
-    </div>
-    
-    <div>
-      Services <br/>
-      <div class="box">
-        <input type="checkbox" name="RehearsalSpace" value="RehearsalSpace"> Rehearsal Space<br/>
-        <input type="checkbox" name="Recording" value="Recording"> Recording<br/>
-        <input type="checkbox" name="Mastering" value="Mastering"> Mastering<br/>
-      </div>
-    </div>
-    
-    <div>
-      Misc <br/>
-      <div class="box">
-        Can accomodate at least <input type="input" name="accomodate" size="3" value="3" /> people
-      </div>
-    </div>
-  </div>
-</div>
-
-<input type="button" id="execute-search" value="Search" />
-</div>
 
 <div id="footer">
 The usual legal mumbo jumbo goes here.

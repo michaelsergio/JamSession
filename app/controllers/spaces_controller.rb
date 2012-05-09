@@ -84,13 +84,22 @@ class SpacesController < ApplicationController
   end
 
   def search 
+    @price_limit = params[:price_limit] || nil
+    @min_people = params[:min_people] || nil
+    @services = params[:services] || []
+
     @location = params[:location] || request.location
-    miles = params[:miles] || 20
+
+    if Rails.env.development? and !params[:location]
+      @location = "NYC"
+    end
+
+    @miles = params[:miles] || 20
     @spaces = Space.paginate(page: params[:page], per_page: 25).
-                  near(@location, miles).
-                  by_max_price(params[:price_limit]).
-                  by_services(params[:services]).
-                  by_min_people(params[:min_people]).
+                  near(@location, @miles).
+                  by_max_price(@price_limit).
+                  by_services(@services).
+                  by_min_people(@min_people).
                   all
   end
 
