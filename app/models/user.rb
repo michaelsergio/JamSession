@@ -18,11 +18,15 @@ class User < ActiveRecord::Base
   after_validation :geocode
 
   scope :by_instruments, (lambda do |instruments|
-    User.where('user.proficiencies.skill in ?', instruments) unless instruments.nil? or instruments.empty?
+    unless instruments.nil? or instruments.empty?
+      User.joins(:proficiencies).where(proficiencies: {skill: instruments})
+    end
   end)
-
+  
   scope :by_styles, (lambda do |styles|
-    User.where('user.proficiencies.skill in ?', styles) unless styles.nil? or styles.empty?
+    unless styles.nil? or styles.empty?
+      User.joins(:proficiencies).where(proficiencies: {skill: styles})
+    end
+#User.where('user.proficiencies.skill in ?', styles) unless styles.nil? or styles.empty?
   end)
-
 end

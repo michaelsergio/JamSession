@@ -51,14 +51,17 @@ class UsersController < ApplicationController
   end
 
   def search 
+    @instruments = params[:instruments] || []
+    @styles = params[:styles] || []
+
     @location = params[:location] || request.location
 
     miles = params[:miles] || 20
     
     @users = User.paginate(page: params[:page], per_page: 25).
                   near(@location, miles).
-                  by_styles(params[:styles]).
-                  by_instruments(params[:instruments]).
+                  by_styles(@styles).
+                  by_instruments(@instruments).
                   all
   end
 end

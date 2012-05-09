@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 gem 'geocoder'
 gem 'will_paginate'
+gem 'simple_form'
 
 
 # Gems used only for assets and not required

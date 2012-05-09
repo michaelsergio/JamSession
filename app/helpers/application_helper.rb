@@ -2,7 +2,7 @@ module ApplicationHelper
   MAP_URL = "http://maps.google.com/maps/api/staticmap?&sensor=false"
 
   # shows a map with positions for up to 26 items
-  def map_tag(location, collection, size="450x300")
+  def map_tag(location, collection, size="640x300")
     collection = collection.take(26)
     markers = []
     collection.each_with_index do |item, i| 

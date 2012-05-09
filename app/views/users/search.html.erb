@@ -1,45 +1,39 @@
 <div class="row">
-  <div class="span4">
-    <form class="form-vertical" action="">
-      <p class="filter">Filter</p>
-      <p class="location"></p>
+  <div class="span3" id="filter">
+    <div class="filter">Filter</div>
+    <%= form_tag(search_users_path, method: :get, class: 'form-vertical') do %>
+      <%= label_tag :location, "Location" %>
+      <%= search_field_tag :location, @location,  placeholder: 'Enter Zip or City' %>
+
+      <%= label_tag :instruments, "Instruments" %>
+      <% ['guitar', 'drums', 'vocals'].each do |instrument|  %>
+        <%= check_box_tag 'instruments[]', 
+            instrument, @instruments.include?(instrument), 
+            id: "instruments_#{instrument}" %>
+        <%= label_tag "instruments_#{instrument}", instrument.humanize %>
+        <br />
+      <% end %>
+
+      <%= label_tag :styles, "Styles" %>
+      <% ['rehearsal', 'recording', 'mastering', 'production'].each do |style| %>
+        <%= check_box_tag 'styles[]', 
+            style, @styles.include?(style), 
+            id: "styles_#{style}" %>
+        <%= label_tag "styles_#{style}", style.humanize %>
+        <br />
+      <% end %>
+
       <br />
-      <div class="instruments">
-      <label class="checkbox">
-      <input type="checkbox">Guitar
-      </label>
-
-      <label class="checkbox">
-      <input type="checkbox">Drums
-      </label>
-
-      <label class="checkbox">
-      <input type="checkbox">Vocals
-      </label>
-      </div>
-      <br />
-      
-
-      <div class="styles">
-      <label class="checkbox">
-      <input type="checkbox">Rehearsal
-      </label>
-      <label class="checkbox">
-      <input type="checkbox">Recording
-      </label>
-      <label class="checkbox">
-      <input type="checkbox">Mastering
-      </label>
-
-      <label class="checkbox">
-      <input type="checkbox">Production
-      </label>
-      
-      </div>
-    </form>
+      <%= submit_tag "Filter"%>
+    <% end %>
   </div>
-  <div class="span8">
+  <div class="span9">
   <%= map_tag @location, @users %>
+  
+  <div class="users">
+    <%= render @users %>
+  </div>
+
   <%= will_paginate @spaces %>
   </div>
 </div>

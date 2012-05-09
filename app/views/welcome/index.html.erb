@@ -1,93 +1,53 @@
-<div id="header">
-	<div id="logo">
-		<img src="/assets/images/logo.png" alt="TheJamStop.com" />
-	</div>
-	
-	<div id="">
-		Login&nbsp;&nbsp;|&nbsp;&nbsp;Register
-	</div>
-</div>
-
 <div id="middle">
-	<img src="/assets/images/welcome_image.png" alt="Welcome to TheJamStop.com" />
+  <%= image_tag "welcome.png" %>
 </div>
 
-<div id="search">
-	<div>
-		I am looking for...
-	</div>
-	
-	<div class="looking-for-btn">
-		Artists
-	</div>
-	
-	<div class="looking-for-btn">
-		Spaces
-	</div>
-	
-	<div class="search-where">
-		Where: <input type="text" name="where" />
-	</div>
-	
-	<div class="search-artists-options">
-		<div>
-			Instruments <br/>
-			<div class="box">
-				<input type="text" id="instruments-filter" />
-				<div class="list">
-					<input type="checkbox" name="Guitar" value="Guitar"> Guitar<br/>
-					<input type="checkbox" name="Drums" value="Drums"> Drums<br/>
-					<input type="checkbox" name="Vocals" value="Vocals"> Vocals<br/>
-				</div>
-			</div>
-		</div>
-		
-		<div>
-			Styles <br/>
-			<div class="box">
-				<input type="text" id="styles-filter" />
-				<div class="list">
-					<input type="checkbox" name="Rock" value="Rock"> Rock<br/>
-					<input type="checkbox" name="Jazz" value="Jazz"> Jazz<br/>
-					<input type="checkbox" name="Classical" value="Classical"> Classical<br/>
-				</div>
-			</div>
-		</div
-	</div>
-	
-	<div class="search-spaces-options">
-		More options
-		
-		<div class="spaces-more-options">
-			<div>
-				Price <br/>
-				<div class="box">
-					<input type="radio" name="amount" value="Any" /> Any amount<br/>
-					<input type="radio" name="amount" value="Specified" /> No more than $ <input type="input" size="3" name="specific-amount" /> per hour.
-				</div>
-			</div>
-			
-			<div>
-				Services <br/>
-				<div class="box">
-					<input type="checkbox" name="RehearsalSpace" value="RehearsalSpace"> Rehearsal Space<br/>
-					<input type="checkbox" name="Recording" value="Recording"> Recording<br/>
-					<input type="checkbox" name="Mastering" value="Mastering"> Mastering<br/>
-				</div>
-			</div>
-			
-			<div>
-				Misc <br/>
-				<div class="box">
-					Can accomodate at least <input type="input" name="accomodate" size="3" value="3" /> people
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<input type="button" id="execute-search" value="Search" />
+<div id="looking-for">
+  I am looking for...
+</div>
+
+<div class="artists">
+  Artists
+</div>
+
+<div class="spaces">
+  Spaces
+</div>
+
+
+<div class="search-spaces-options">
+  More options
+  
+  <div class="spaces-more-options">
+    <div>
+      Price <br/>
+      <div class="box">
+        <input type="radio" name="amount" value="Any" /> Any amount<br/>
+        <input type="radio" name="amount" value="Specified" /> No more than $ <input type="input" size="3" name="specific-amount" /> per hour.
+      </div>
+    </div>
+    
+    <div>
+      Services <br/>
+      <div class="box">
+        <input type="checkbox" name="RehearsalSpace" value="RehearsalSpace"> Rehearsal Space<br/>
+        <input type="checkbox" name="Recording" value="Recording"> Recording<br/>
+        <input type="checkbox" name="Mastering" value="Mastering"> Mastering<br/>
+      </div>
+    </div>
+    
+    <div>
+      Misc <br/>
+      <div class="box">
+        Can accomodate at least <input type="input" name="accomodate" size="3" value="3" /> people
+      </div>
+    </div>
+  </div>
+</div>
+
+<input type="button" id="execute-search" value="Search" />
 </div>
 
 <div id="footer">
-	The usual legal mumbo jumbo goes here.
+The usual legal mumbo jumbo goes here.
 </div>
