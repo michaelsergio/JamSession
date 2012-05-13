@@ -23,6 +23,7 @@ Jamsession::Application.routes.draw do
     get 'all'
     get 'inbox'
     get 'sent'
+    get 'testfire'
     post 'send_message'
   end
 

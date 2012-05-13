@@ -22,6 +22,7 @@ gem 'simple_form'
 
 group :development, :test do 
   gem 'rspec-rails'
+  gem "capybara"
 end
 
 # Gems used only for assets and not required
