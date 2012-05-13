@@ -8,4 +8,15 @@
   <div class="location">
     <%= user.location %>
   </div>
+  <div class="Skills">
+   <p>Skills:</p>
+   <%= user.skills.join(',') %>
+  </div>
+  <div class="styles">
+   <p>Styles:</p>
+   <%= user.styles.join(',') %>
+  </div>
+  <div class="contact">
+    <%= image_tag 'contact.png' %>
+  </div>
 </div>

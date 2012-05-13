@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120508030547) do
+ActiveRecord::Schema.define(:version => 20120512051926) do
 
   create_table "messages", :force => true do |t|
     t.string   "topic"
@@ -33,6 +33,22 @@ ActiveRecord::Schema.define(:version => 20120508030547) do
   add_index "messages", ["ancestry"], :name => "index_messages_on_ancestry"
   add_index "messages", ["sent_messageable_id", "received_messageable_id"], :name => "acts_as_messageable_ids"
 
+  create_table "personal_skills", :force => true do |t|
+    t.integer  "skill_id"
+    t.integer  "user_id"
+    t.integer  "expertise_level"
+    t.integer  "years_of_experience"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "personal_styles", :force => true do |t|
+    t.integer  "style_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "proficiencies", :force => true do |t|
     t.string   "skill"
     t.string   "expertise_level"
@@ -47,6 +63,12 @@ ActiveRecord::Schema.define(:version => 20120508030547) do
     t.integer  "rating"
     t.integer  "posted_by"
     t.integer  "space_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "skills", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -70,6 +92,12 @@ ActiveRecord::Schema.define(:version => 20120508030547) do
     t.datetime "profile_picture_updated_at"
     t.float    "latitude"
     t.float    "longitude"
+  end
+
+  create_table "styles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

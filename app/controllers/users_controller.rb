@@ -24,20 +24,13 @@ class UsersController < ApplicationController
 
   # GET /user/1/edit
   def edit
-    @user = User.find(params[:id])
-    if current_user != @user
-      render :file => "public/422.html", status:422 and return
-    end
+    @user = current_user
   end
 
   # PUT /users/1
   # PUT /users/1.json
   def update
-    @user = User.find(params[:id])
-
-    if current_user != @user
-      render :file => "public/422.html", status:422 and return
-    end
+    @user = current_user
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -65,6 +58,7 @@ class UsersController < ApplicationController
                   near(@location, @miles).
                   by_styles(@styles).
                   by_instruments(@instruments).
+                  with_skills_and_styles.
                   all
   end
 end
