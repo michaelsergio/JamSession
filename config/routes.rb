@@ -1,5 +1,7 @@
 Jamsession::Application.routes.draw do
 
+  resources :styles
+
   resources :spaces do 
     member do 
       post 'post_review'
@@ -12,11 +14,19 @@ Jamsession::Application.routes.draw do
   devise_for :users
 
   resources :users do
-    resources :proficiencies
     collection do 
       get 'search'
     end
   end
+
+  namespace :messages do
+    get 'all'
+    get 'inbox'
+    get 'sent'
+    post 'send_message'
+  end
+
+  
 
   root :to => 'welcome#index'
 

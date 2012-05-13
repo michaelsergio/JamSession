@@ -21,6 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :profile_picture %><br />
+    <%= image_tag current_user.profile_picture %>
     <%= f.file_field :profile_picture %>
   </div>
 
@@ -28,8 +29,9 @@
     <%= f.submit %>
   </div>
 
-  <% @user.proficiencies.each do |proficiency| %>
-    <li> <%= proficiency.skill %> for <%= pluralize proficiency.years_of_experience, 'year' %> (<%= proficiencies.expertise_level %>)
-    </li>
+  <%= @user.skills.each do |skill| %>
+    <li>
+      <%= skill %>
+      <li>  proficiency.skill  for  pluralize proficiency.years_of_experience, 'year' %  proficiencies.expertise_level %
   <% end %>
 <% end %>

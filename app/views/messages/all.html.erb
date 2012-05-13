@@ -1,0 +1,7 @@
+<% if @messages.empty?  %>
+  <h2>No Messages</h2>
+<% else %>
+  <%= @messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
