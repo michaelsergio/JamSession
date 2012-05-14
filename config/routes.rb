@@ -1,6 +1,7 @@
 Jamsession::Application.routes.draw do
 
   resources :styles
+  resources :skills
 
   resources :spaces do 
     member do 

@@ -27,13 +27,13 @@ class User < ActiveRecord::Base
 
   scope :by_instruments, (lambda do |instruments|
     unless instruments.nil? or instruments.empty?
-      User.joins(:skill).where(skill: instruments)
+      User.joins(:skills).where(name: instruments)
     end
   end)
   
   scope :by_styles, (lambda do |styles|
     unless styles.nil? or styles.empty?
-      User.joins(:proficiencies).where(style: styles)
+      User.joins(:styles).where(name: styles)
     end
 #User.where('user.proficiencies.skill in ?', styles) unless styles.nil? or styles.empty?
   end)

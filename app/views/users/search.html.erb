@@ -8,29 +8,12 @@
       
       <p>
       <%= label_tag :styles, "Styles" %> <br />
-      <%= text_field_tag :styles %>
+      <%= text_field_tag :styles, "",  id: 'search-styles' %>
       </p>
-
-
-      Remove
-      VVVVVVVVVVVVVVv
-      <%= label_tag :instruments, "Instruments" %>
-      <% ['guitar', 'drums', 'vocals'].each do |instrument|  %>
-        <%= check_box_tag 'instruments[]', 
-            instrument, @instruments.include?(instrument), 
-            id: "instruments_#{instrument}" %>
-        <%= label_tag "instruments_#{instrument}", instrument.humanize %>
-        <br />
-      <% end %>
-
-      <%= label_tag :styles, "Styles" %>
-      <% ['rehearsal', 'recording', 'mastering', 'production'].each do |style| %>
-        <%= check_box_tag 'styles[]', 
-            style, @styles.include?(style), 
-            id: "styles_#{style}" %>
-        <%= label_tag "styles_#{style}", style.humanize %>
-        <br />
-      <% end %>
+      <p>
+      <%= label_tag :skills, "Skills" %> <br />
+      <%= text_field_tag :skills, "", placeholder:"e.g. Guitar, Drums, Vocals",  id: 'search-skills' %>
+      </p>
 
       <br />
       <%= submit_tag "Filter"%>
