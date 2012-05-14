@@ -1,0 +1,12 @@
+<div class="picture"><%= image_tag message.from.profile_picture %></div>
+<div class="topic"><%= message.topic %></div>
+<div class="body"><%= message.body %></div>
+<div class="name"><%= message.from.name %></div>
+<div class="sent">Sent <%= time_ago_in_words message.created_at %> ago</div>
+<div class="reply">
+  <form action="<%=reply_message_path(message)%>" method="POST">
+    <input id="reply" name="reply" type="text-area" />
+    <input type="submit" value="Reply" />
+  </form>
+</div>
+<br />

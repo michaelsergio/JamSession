@@ -6,9 +6,10 @@ class MessagesController < ApplicationController
   end
 
   def testfire
-    msg = current_user.send_message(current_user,"hello-test") 
-    raise [current_user.messages(), current_user.sent_messages_relation, msg].to_yaml
-    redirect_to messages_inbox_path, notice: current_user.sent_messages_relation.inspect
+    user = current_user
+    to = User.find(current_user.id  == 1? 2 : 1)
+    msg = current_user.send_message(to, "hello-test", "body")
+    redirect_to messages_inbox_path, notice: to.sent_messages_relation.inspect
 
   end
   def inbox
@@ -32,11 +33,18 @@ class MessagesController < ApplicationController
     end
   end
 
+  def reply_message 
+    message = Message.find(params[:id])
+    if message.to == current_user
+      message.reply(topic: params[:topic], body: params[:body])
+    end
+    
+  end
 
   def send_message
     from = current_user
     to = User.find(params[:id])
-    from.send_message(to, params[:topic], params[:message])
+    from.send_message(to, params[:topic], params[:body])
     redirect_to 'message_path', notice: "Message sent to #{to.name}"
   end
 

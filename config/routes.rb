@@ -1,5 +1,6 @@
 Jamsession::Application.routes.draw do
 
+  
   resources :styles
   resources :skills
 
@@ -13,19 +14,23 @@ Jamsession::Application.routes.draw do
   end
 
   devise_for :users
-
   resources :users do
     collection do 
       get 'search'
     end
   end
 
-  namespace :messages do
-    get 'all'
-    get 'inbox'
-    get 'sent'
-    get 'testfire'
-    post 'send_message'
+  resources :messages do
+    member do 
+      post 'reply'
+    end
+    collection do
+      get 'all'
+      get 'inbox'
+      get 'sent'
+      post 'send_message'
+      get 'testfire'
+    end
   end
 
   

@@ -14,7 +14,7 @@
       </div>
       <div id="signin">
         <% if user_signed_in? %>
-          <%= link_to "Logout", destroy_user_session_path %> 
+          <%= link_to "Logout", destroy_user_session_path, method: :delete %> 
           <%= link_to "Profile", edit_user_path(current_user) %> 
           <%= link_to "Messages", messages_all_path %>
         <% else %>

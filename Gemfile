@@ -22,7 +22,12 @@ gem 'simple_form'
 
 group :development, :test do 
   gem 'rspec-rails'
-  gem "capybara"
+  gem 'capybara'
+end
+
+group :development do 
+  gem 'guard-rspec'
+  gem 'guard-livereload'
 end
 
 # Gems used only for assets and not required

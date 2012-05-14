@@ -17,6 +17,8 @@
    <%= user.styles.join(',') %>
   </div>
   <div class="contact">
-    <%= image_tag 'contact.png' %>
+    <form action="<%= send_message_messages_path(user) %>" method="post">
+      <%= image_tag 'contact.png' %>
+    </form>
   </div>
 </div>

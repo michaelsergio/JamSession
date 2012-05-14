@@ -1,2 +1,5 @@
-<%= @messages %>
-<%= raise @messages.to_yaml %>
+<% if @messages.empty? %>
+  <h1>No new messages</h1>
+<% else %>
+  <%= render partial: 'message', collection: @messages %>
+<% end %>
