@@ -1,6 +1,6 @@
 <div class="user">
   <span class="profile_picture">
-    <%= image_tag user.profile_picture %>
+    <%= image_tag user.profile_picture.url(:thumb) %>
   </span>
   <div class="name">
     <%= user.name %>

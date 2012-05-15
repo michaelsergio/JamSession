@@ -9,7 +9,7 @@
   <b>Location:</b>
   <%= @user.location %>
   <br />
-  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@user.latitude}%2C#{@user.longitude}" %>
+  <%= map_tag_for_user(@user) %>
 </p>
 
 <p>

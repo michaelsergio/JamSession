@@ -6,7 +6,9 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :name, :location
+  attr_accessible :name, :location, :hide_location_from_search
+
+  validates_presence_of :name
   
   has_many :personal_skills
   has_many :personal_styles
@@ -20,6 +22,14 @@ class User < ActiveRecord::Base
 
   geocoded_by :location
   after_validation :geocode
+  before_save :clear_location
+
+  def clear_location 
+    if self.hide_location_from_search
+      self.latitude = nil
+      self.longitude = nil
+    end
+  end
 
   scope :with_skills_and_styles, (lambda do
     User.includes(skills: :personal_skills).includes(styles: :personal_styles)

@@ -16,6 +16,10 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <%= f.label :hide_location_from_search, 'Hide Location and Availability From search listings' %>
+    <%= f.check_box :hide_location_from_search %>
+  </div>
+  <div class="field">
     <%= f.label :location %><br />
     <%= f.text_field :location %>
   </div>

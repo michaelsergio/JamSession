@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120513054123) do
+ActiveRecord::Schema.define(:version => 20120514233100) do
 
   create_table "messages", :force => true do |t|
     t.string   "topic"
@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(:version => 20120513054123) do
     t.datetime "profile_picture_updated_at"
     t.float    "latitude"
     t.float    "longitude"
+    t.boolean  "hide_location_from_search"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
