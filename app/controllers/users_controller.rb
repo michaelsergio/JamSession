@@ -54,11 +54,10 @@ class UsersController < ApplicationController
 
     @miles = params[:miles] || 20
     
-    @users = User.paginate(page: params[:page], per_page: 25).
-                  near(@location, @miles).
+    @users = User.near(@location, @miles).
                   by_styles(@styles).
                   by_instruments(@instruments).
                   with_skills_and_styles.
-                  all
+                  paginate(page: params[:page], per_page: 25)
   end
 end

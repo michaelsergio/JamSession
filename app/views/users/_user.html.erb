@@ -16,12 +16,12 @@
     <%= user.location %>
   </div>
   <div class="skills">
-   <p>Skills:</p>
-   <%= user.skills.join(',') %>
+   <p>Skills: <%= user.skills.map(&:name).join(", ") %> </p>
   </div>
   <div class="styles">
-   <p>Styles:</p>
-   <%= user.styles.join(',') %>
+   <p>
+   Styles: <%= user.styles.map(&:name).join(', ') %>
+   </p>
   </div>
 
   <hr />
