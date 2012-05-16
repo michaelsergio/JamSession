@@ -1,14 +1,21 @@
 <div class="user">
-  <span class="profile_picture">
-    <%= image_tag user.profile_picture.url(:thumb) %>
-  </span>
   <div class="name">
     <%= user.name %>
+  </div>
+  <span class="profile_picture">
+    <% unless user.profile_picture.nil? %>
+      <%= image_tag user.profile_picture.url(:thumb) %>
+    <% end %>
+  </span>
+  <div class="contact">
+    <form action="<%= send_message_messages_path(user) %>" method="post">
+      <%= image_tag 'contact.png' %>
+    </form>
   </div>
   <div class="location">
     <%= user.location %>
   </div>
-  <div class="Skills">
+  <div class="skills">
    <p>Skills:</p>
    <%= user.skills.join(',') %>
   </div>
@@ -16,9 +23,6 @@
    <p>Styles:</p>
    <%= user.styles.join(',') %>
   </div>
-  <div class="contact">
-    <form action="<%= send_message_messages_path(user) %>" method="post">
-      <%= image_tag 'contact.png' %>
-    </form>
-  </div>
+
+  <hr />
 </div>
