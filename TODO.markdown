@@ -11,7 +11,9 @@ Ability to add styles
 Ability to add Skills
 Make sure filters are working properly
 Add Param String for users
+miles parameters for location search
 Walk through user creation process
+map indicator on search results i.e.(A B C)
 Get email setup
 Get Amazon S3 Setup
 Push to heroku
