@@ -14,6 +14,7 @@ module ApplicationHelper
   end
 
   private
+
   def iToAZ(i)
     (i + 65).chr if (0..26) === i
   end

@@ -23,7 +23,7 @@
   <%= map_tag @location, @users %>
   
   <div class="users">
-    <%= render @users %>
+    <%= render(@users) || "Nobody found. Try readjusting your search parameters and try again." %>
   </div>
 
   <%= will_paginate @users %>
