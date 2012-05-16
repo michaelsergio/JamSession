@@ -1,3 +1,23 @@
+Priority Things To Finish
+-----------------------------
+Message Boxs html & css
+read and unread messages
+New message numbers on notifications bar
+Get one coversation going
+Contact that turns into compose box via JS
+Profile page html
+About text for users
+Ability to add styles
+Ability to add Skills
+Make sure filters are working properly
+Add Param String for users
+Walk through user creation process
+Get email setup
+Get Amazon S3 Setup
+Push to heroku
+
+
+
 Add Styles
 ----------
 token input
@@ -24,8 +44,6 @@ Test location miles away
 
 Styling for 
 -----------
-* Main page
-* Artist Search Page
 * Artist Profile Page
 
 
