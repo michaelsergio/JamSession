@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #users {
+  margin-top: 15px;
+
   #filter {
     background: hsl(200, 27, 68)
   }
@@ -11,19 +13,23 @@
   }
   
   .user {
-    .name {
-      font-weight: bold;
+    .profile_picture {
+      float: left;
     }
     .information {
       display: inline-block;
       padding-top: 10px;
 
+      .name {
+        font-weight: bold;
+      }
       .location {}
       .skills {}
       .styles {}
     }
     .contact {
       float: right;
+      margin-top: 20px;
     }
   }
 }

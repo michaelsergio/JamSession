@@ -1,7 +1,4 @@
 <div class="user">
-  <div class="name">
-    <%= link_to user.name, user %>
-  </div>
   <span class="profile_picture">
     <% unless user.profile_picture.nil? %>
       <%= image_tag user.profile_picture.url(:thumb) %>
@@ -13,6 +10,9 @@
     </form>
   </div>
   <div class="information">
+    <div class="name">
+      <%= link_to user.name, user %>
+    </div>
     <div class="location">
       <%= user.location %>
     </div>
