@@ -1,5 +1,8 @@
+<div class="sent-mail-header">
+  <h1>Sent Mail</h1>
+</div>
 <% if @messages.empty? %>
-  <h1>No new messages</h1>
+  <h2>No sent messages</h2>
 <% else %>
   <%= render partial: 'message', collection: @messages %>
 <% end %>
