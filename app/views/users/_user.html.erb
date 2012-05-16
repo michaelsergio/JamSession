@@ -1,6 +1,6 @@
 <div class="user">
   <div class="name">
-    <%= user.name %>
+    <%= link_to user.name, user %>
   </div>
   <span class="profile_picture">
     <% unless user.profile_picture.nil? %>
@@ -12,17 +12,18 @@
       <%= image_tag 'contact.png' %>
     </form>
   </div>
-  <div class="location">
-    <%= user.location %>
+  <div class="information">
+    <div class="location">
+      <%= user.location %>
+    </div>
+    <div class="skills">
+     <p>Skills: <%= user.skills.map(&:name).join(", ") %> </p>
+    </div>
+    <div class="styles">
+     <p>
+     Styles: <%= user.styles.map(&:name).join(', ') %>
+     </p>
+    </div>
   </div>
-  <div class="skills">
-   <p>Skills: <%= user.skills.map(&:name).join(", ") %> </p>
-  </div>
-  <div class="styles">
-   <p>
-   Styles: <%= user.styles.map(&:name).join(', ') %>
-   </p>
-  </div>
-
   <hr />
 </div>

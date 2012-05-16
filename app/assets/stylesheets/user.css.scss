@@ -14,14 +14,13 @@
     .name {
       font-weight: bold;
     }
-    .location {
+    .information {
+      display: inline-block;
+      padding-top: 10px;
 
-    }
-    .skills {
-      
-    }
-    .styles {
-
+      .location {}
+      .skills {}
+      .styles {}
     }
     .contact {
       float: right;
