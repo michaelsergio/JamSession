@@ -1,0 +1,30 @@
+#messages {
+  .sent-mail-header {
+    margin-bottom: 20px;
+  }
+  .even {
+    background-color: hsla(0, 0%, 95%, 0.85);
+  }
+  .odd{}
+
+  .message {
+
+    .picture{
+      float:left;
+      margin-right: 5px;
+
+    }
+    .name{ 
+      font-weight: bold;
+    }
+    .status{}
+    .topic{
+      font-weight: bold;
+    }
+    .body{}
+    .sent{}
+    .reply {
+      visibility: hidden;
+    }
+  }
+}
