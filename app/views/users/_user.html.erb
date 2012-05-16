@@ -1,4 +1,5 @@
 <div class="user">
+  <input id="user-<%= user.id %>" type="hidden" val="<%= user.id %>" />
   <span class="profile_picture">
     <% unless user.profile_picture.nil? %>
       <%= image_tag user.profile_picture.url(:thumb) %>
@@ -25,5 +26,7 @@
      </p>
     </div>
   </div>
+
+  <div class="message"></div>
   <hr />
 </div>

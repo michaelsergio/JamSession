@@ -36,7 +36,7 @@ class MessagesController < ApplicationController
   def reply_message 
     message = Message.find(params[:id])
     if message.to == current_user
-      message.reply(topic: params[:topic], body: params[:body])
+      message.reply(topic: params[:subject], body: params[:body])
     end
     
   end
@@ -44,8 +44,12 @@ class MessagesController < ApplicationController
   def send_message
     from = current_user
     to = User.find(params[:id])
-    from.send_message(to, params[:topic], params[:body])
-    redirect_to 'message_path', notice: "Message sent to #{to.name}"
+    from.send_message(to, params[:subject], params[:body])
+    respond_to do |format|
+      format.html { redirect_to 'inbox_messages', 
+                                 notice: "Message sent to #{to.name}"}
+      format.js {"sent" if request.xhr? }
+    end
   end
 
 end

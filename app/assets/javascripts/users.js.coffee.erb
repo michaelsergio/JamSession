@@ -1,4 +1,4 @@
-$(document).ready ->
+$('#users').ready ->
   tokenize = (selector, url) ->
     $(selector).tokenInput(url,
         crossDomain: false,
@@ -7,7 +7,53 @@ $(document).ready ->
         hintText: $(this).attr('placeholder'),
         prePopulate: [{name: 'Guitar'}, {name: 'Drums'}]
     )
-  
+
+  show_message = (in_div) ->
+    content = """
+      <label for="subject">Subject</label>
+      <input type="text" name="subject" />
+      <label for="message">Message</label>
+      <textarea class="submit" name="body" rows="7"></textarea>
+      <br /> 
+      <input type="submit" value="Send" />
+    """
+    in_div.hide()
+    in_div.html(content)
+
+    # give content the ability to send a message
+    in_div.children('input[type=submit]').click ->
+      data =
+        subject: in_div.children('input[name=subject]').val()
+        body: in_div.children('input[name=body]').val()
+      
+      # TODO add better validation
+      unless (data.subject and data.body)
+        return
+
+      $.ajax(
+          type: 'POST'
+          url: '/messages/send_message'
+          data: data
+          success: (xhr, status, err) ->
+            #make the ajax request
+            alert(status)
+          error: (xhr, status, err) ->
+            alert(status + err)
+          complete: (xhr, status) ->
+            alert(status)
+      )
+
+    in_div.slideDown()
+    in_div.animate('color':'yellow', 1000)
+
   tokenize('#search-skills', '/skills.json')
   tokenize('#search-styles', '/styles.json')
+
+  $('.contact').click ->
+    message = $(this).parent().children(".message")
+    if message.children().size() == 0
+      show_message(message)
+    else
+      message.slideUp(400, ->
+        message.empty())
 
