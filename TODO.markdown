@@ -4,22 +4,31 @@ read and unread messages needs to implemented
 New message numbers on notifications bar
 
 Get one coversation going
+reply to message in inbox/sent/all`
 Send message from the search results page
 
 Clean up user page html
 
 Contact that turns into compose box via JS. Search Page
 
+FAKE SKILLS & STYLES BY PREDEFINING LIST
 Ability to add styles user profile
-Ability to add Skills on user profile
+Ability to add skills on user profile
 
 Make sure filters are working properly
 
 Walk through user creation process
 
-Get email setup
 Get Amazon S3 Setup
 Push to heroku
+
+extra
+--------
+Add miles to search location
+user reviews
+set expierence on skills
+Get email setup
+
 
 
 

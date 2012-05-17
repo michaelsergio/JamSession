@@ -5,6 +5,19 @@
 #users {
   margin-top: 15px;
 
+  .map-letter{
+    text-align: center;
+    width: 20px; 
+    height: 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background-color: #5CA5CA;
+    float:left;
+    margin-top: 50px;
+    font-weight: bold;
+  }
+
   #filter {
     background: hsl(200, 27, 68)
   }

@@ -13,7 +13,6 @@ module ApplicationHelper
     image_tag MAP_URL + "&size=#{size}#{markers.join}#{center}"
   end
 
-  private
 
   def iToAZ(i)
     (i + 65).chr if (0..26) === i
