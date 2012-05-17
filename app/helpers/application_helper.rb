@@ -17,4 +17,11 @@ module ApplicationHelper
   def iToAZ(i)
     (i + 65).chr if (0..26) === i
   end
+
+  def token_input(skillOrStyle)
+    if skillOrStyle and not skillOrStyle.empty?
+      (skillOrStyle.map {|s| { name: s.name, id: s.id} }).to_json
+    end
+  end
+
 end

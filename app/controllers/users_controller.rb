@@ -73,7 +73,7 @@ class UsersController < ApplicationController
   end
 
   def search 
-    @skill = params[:skills] || []
+    @skills = params[:skills] || []
     @styles = params[:styles] || []
 
     @location = params[:location] || request.location
@@ -82,7 +82,6 @@ class UsersController < ApplicationController
     end
 
     @miles = params[:miles] || 20
-    raise [@skills.to_yaml, params[:skills]].to_yaml
     
       @users = User.includes(:skills).where('skills.name' => 'Drummer')
                    .paginate(page: params[:page], per_page: 25)
@@ -94,5 +93,7 @@ by_styles(@styles).
 #with_skills_and_styles.
 paginate(page: params[:page], per_page: 25)
 =end
+  @skills = @skills.split(',').map { |name| Skill.find_by_name(name) }
+  @styles = @styles.split(',').map { |name| Style.find_by_name(name) }
   end
 end
