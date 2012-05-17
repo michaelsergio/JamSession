@@ -28,9 +28,19 @@
 <p>
 
 
+<div class="skills">
+ <p>Skills: <%= @user.skills.map(&:name).join(", ") %> </p>
+</div>
+<div class="styles">
+ <p>
+ Styles: <%= @user.styles.map(&:name).join(', ') %>
+ </p>
+</div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+
+<% if current_user == @user %>
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+<% end %>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

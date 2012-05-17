@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   has_many :skills, through: :personal_skills
   has_many :styles, through: :personal_styles
 
+  attr_accessible :skills, :styles
+
   has_attached_file :profile_picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   attr_accessible  :profile_picture
 
