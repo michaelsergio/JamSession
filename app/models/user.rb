@@ -47,4 +47,8 @@ class User < ActiveRecord::Base
     end
 #User.where('user.proficiencies.skill in ?', styles) unless styles.nil? or styles.empty?
   end)
+
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
 end
