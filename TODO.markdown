@@ -19,6 +19,7 @@ Make sure filters are working properly
 
 Walk through user creation process
 
+Sign up google maps api key
 Get Amazon S3 Setup
 Push to heroku
 
