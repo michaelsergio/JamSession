@@ -1,5 +1,5 @@
 <div class="user">
-  <input id="user-<%= user.id %>" type="hidden" val="<%= user.id %>" />
+  <input id="user-<%= user.id %>" class="hidden-id" type="hidden" value="<%= user.id %>" />
   <span class="profile_picture">
     <% unless user.profile_picture.nil? %>
       <%= image_tag user.profile_picture.url(:thumb) %>

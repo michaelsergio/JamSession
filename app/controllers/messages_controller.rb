@@ -46,9 +46,9 @@ class MessagesController < ApplicationController
     to = User.find(params[:id])
     from.send_message(to, params[:subject], params[:body])
     respond_to do |format|
-      format.html { redirect_to 'inbox_messages', 
+      format.html { redirect_to inbox_messages_path, 
                                  notice: "Message sent to #{to.name}"}
-      format.js {"sent" if request.xhr? }
+      format.js { render json: "sent".to_json if request.xhr? }
     end
   end
 

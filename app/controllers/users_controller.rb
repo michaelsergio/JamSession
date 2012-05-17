@@ -53,11 +53,16 @@ class UsersController < ApplicationController
     end
 
     @miles = params[:miles] || 20
-    
+      
+# testing while i have lack of internet access
+    @users = User.
+                  paginate(page: params[:page], per_page: 25)
+=begin
     @users = User.near(@location, @miles).
                   by_styles(@styles).
                   by_instruments(@instruments).
                   with_skills_and_styles.
                   paginate(page: params[:page], per_page: 25)
+=end
   end
 end

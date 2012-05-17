@@ -13,7 +13,7 @@ $('#users').ready ->
       <label for="subject">Subject</label>
       <input type="text" name="subject" />
       <label for="message">Message</label>
-      <textarea class="submit" name="body" rows="7"></textarea>
+      <textarea class="message-body" name="body" rows="7"></textarea>
       <br /> 
       <input type="submit" value="Send" />
     """
@@ -23,25 +23,27 @@ $('#users').ready ->
     # give content the ability to send a message
     in_div.children('input[type=submit]').click ->
       data =
+        id: in_div.parent().children('.hidden-id').val()
         subject: in_div.children('input[name=subject]').val()
-        body: in_div.children('input[name=body]').val()
+        body: in_div.children('textarea[name=body]').val()
       
       # TODO add better validation
       unless (data.subject and data.body)
         return
 
-      $.ajax(
-          type: 'POST'
-          url: '/messages/send_message'
-          data: data
-          success: (xhr, status, err) ->
-            #make the ajax request
-            alert(status)
-          error: (xhr, status, err) ->
-            alert(status + err)
-          complete: (xhr, status) ->
-            alert(status)
-      )
+      in_div.children('input[type=submit]').click ->
+        $.ajax(
+            type: 'POST'
+            url: '/messages/send_message.js'
+            data: data
+            success: (xhr, status, err) ->
+              #make the ajax request
+              in_div.html('<p class="label label-success">Message Sent</p>')
+            error: (xhr, status, err) ->
+              in_div.html('<p class="label label-error">Failed to send message.</p>')
+
+            complete: (xhr, status) ->
+        )
 
     in_div.slideDown()
     in_div.animate('color':'yellow', 1000)
