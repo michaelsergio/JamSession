@@ -35,15 +35,17 @@ class User < ActiveRecord::Base
     User.includes(skills: :personal_skills).includes(styles: :personal_styles)
   end)
 
-  scope :by_instruments, (lambda do |instruments|
-    unless instruments.nil? or instruments.empty?
-      User.joins(:skills).where(name: instruments)
+  scope :by_skills, (lambda do |skills|
+    unless skills.nil? or skills.empty?
+      #User.includes(:skills).where('skills.name' => skills)
+      u = User.includes(:skills).where('skills.name' => 'Drummer')
+      raise u.to_yaml
     end
   end)
   
   scope :by_styles, (lambda do |styles|
     unless styles.nil? or styles.empty?
-      User.joins(:styles).where(name: styles)
+      User.includes(:styles).where('styles.name'=> styles)
     end
 #User.where('user.proficiencies.skill in ?', styles) unless styles.nil? or styles.empty?
   end)
