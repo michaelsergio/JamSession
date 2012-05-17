@@ -21,7 +21,26 @@
 </p>
 <p>
 
+<p>
+  <b>About:</b>
+  <%= @user.about %>
+</p>
+<p>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<div class="skills">
+ <p><b>Skills:</b> <%= @user.skills.map(&:name).join(", ") %> </p>
+</div>
+<div class="styles">
+ <p>
+ <b>Styles:</b> <%= @user.styles.map(&:name).join(', ') %>
+ </p>
+</div>
+
+
+<% if current_user == @user %>
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+<% end %>
+
+
 <%= link_to 'Back', users_path %>

@@ -24,18 +24,29 @@
     <%= f.text_field :location %>
   </div>
   <div class="field">
+    <%= f.label :about %><br />
+    <%= f.text_area :about %>
+  </div>
+  <div class="field">
     <%= f.label :profile_picture %><br />
     <%= image_tag current_user.profile_picture %>
     <%= f.file_field :profile_picture %>
   </div>
 
+  <div class="style">
+    <%= f.label :styles %> <br />
+    <%= f.text_field :styles, id: 'search-styles', value: @user.token_input_styles %>
+  </div>
+  <div class="skill">
+    <%= f.label :skills %> <br />
+    <%= f.text_field :skills, placeholder:"",  id: 'search-skills', value: @user.token_input_skills %>
+  </div>
+
+  <br />
+  
   <div class="actions">
     <%= f.submit %>
   </div>
 
-  <%= @user.skills.each do |skill| %>
-    <li>
-      <%= skill %>
-      <li>  proficiency.skill  for  pluralize proficiency.years_of_experience, 'year' %  proficiencies.expertise_level %
-  <% end %>
+
 <% end %>

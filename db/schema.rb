@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20120517004935) do
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "hide_location_from_search"
+    t.text     "about"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
