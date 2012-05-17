@@ -1,10 +1,12 @@
 <div class="message <%= message_counter.odd? ? "odd" : "even" %>" >
-  <div class="picture"><%= image_tag message.from.profile_picture.url(:thumb) %></div>
+  <div class="picture"><%= image_tag other_guys_picture message %></div>
   <div class="status"><%= message.opened ? "Read" : "Unread" %></div>
-  <div class="name"><%= message.from.name %></div>
+  <div class="name">From: <%= message.from.name %></div>
+  <div class="name">To: <%= message.to.name %></div>
+  <div class="sent">Sent <%= time_ago_in_words message.created_at %> ago</div>
   <div class="topic"><%= message.topic %></div>
   <div class="body"><%= message.body %></div>
-  <div class="sent">Sent <%= time_ago_in_words message.created_at %> ago</div>
+  <div class="btn btn-primary reply-btn">Reply</div>
   <div class="reply">
     <form action="<%=reply_message_path(message)%>" method="POST">
       <input id="reply" name="reply" type="text-area" />
