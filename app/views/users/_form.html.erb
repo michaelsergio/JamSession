@@ -35,11 +35,11 @@
 
   <div class="style">
     <%= f.label :styles %> <br />
-    <%= f.text_field :styles, id: 'search-styles' %>
+    <%= f.text_field :styles, id: 'search-styles', value: @user.token_input_styles %>
   </div>
   <div class="skill">
     <%= f.label :skills %> <br />
-    <%= f.text_field :skills, placeholder:"",  id: 'search-skills' %>
+    <%= f.text_field :skills, placeholder:"",  id: 'search-skills', value: @user.token_input_skills %>
   </div>
 
   <br />

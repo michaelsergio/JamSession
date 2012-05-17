@@ -51,6 +51,15 @@ class User < ActiveRecord::Base
 #User.where('user.proficiencies.skill in ?', styles) unless styles.nil? or styles.empty?
   end)
 
+
+  def token_input_skills 
+    (self.skills.map {|s| { name: s.name, id: s.id } }).to_json
+  end
+
+  def token_input_styles 
+    (self.styles.map {|s| { name: s.name, id: s.id} }).to_json
+  end
+
   def to_param
     "#{id}-#{name.parameterize}"
   end

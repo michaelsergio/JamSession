@@ -5,6 +5,7 @@ $(document).ready ->
         tokenValue:'name',
         theme: 'facebook',
         hintText: $(this).attr('placeholder'),
+        preventDuplicates: true
         #prePopulate: [{name: 'Guitar'}, {name: 'Drums'}]
     )
   
@@ -16,9 +17,10 @@ $(document).ready ->
     $(selector).tokenInput(url,
       crossDomain: false,
       theme: 'facebook',
-      hintText: $(this).attr('placeholder'))
+      preventDuplicates: true
+      prePopulate: JSON.parse($(selector).val()))
 
   # TODO these should have value be thier id, not thier name
-  tokenizeEdit('.edit_user #search-skills', '/skills.json')
   tokenizeEdit('.edit_user #search-styles', '/styles.json')
+  tokenizeEdit('.edit_user #search-skills', '/skills.json')
 
