@@ -34,25 +34,34 @@ class User < ActiveRecord::Base
     end
   end
 
-  scope :with_skills_and_styles, (lambda do
-    User.includes(skills: :personal_skills).includes(styles: :personal_styles)
+  def oh_god
+    a = %{ SELECT * FROM users, personal_skills, skills 
+           WHERE users.id = personal_skills.user_id 
+           AND personal_skills.skill_id = skills.id }
+    b= ActiveRecord::Base.connection.execute(a)
+
+  end
+  scope :with_skills_and_styles, (lambda do |skills, styles|
+#by_skills(skills).merge(by_styles(styles)) 
   end)
 
-  scope :by_skills, (lambda do |skills|
+  def self.by_skills(skills)
     unless skills.nil? or skills.empty?
-      #User.includes(:skills).where('skills.name' => skills)
-      u = User.includes(:skills).where('skills.name' => 'Drummer')
-      raise u.to_yaml
+      scoped = includes(:skills)
+      skills.each do |skill|
+        scoped.merge(where('skills.name' => skill))
+      end
     end
-  end)
-  
-  scope :by_styles, (lambda do |styles|
-    unless styles.nil? or styles.empty?
-      User.includes(:styles).where('styles.name'=> styles)
-    end
-#User.where('user.proficiencies.skill in ?', styles) unless styles.nil? or styles.empty?
-  end)
+  end
 
+  def self.by_styles(styles)
+    includes(:styles).where('styles.name'=> styles) unless styles.nil? or styles.empty?
+  end
+
+  scope :nearby_with_skills_and_styles, (lambda do |skills, styles, location, miles|
+      #TODO currently broken
+      near(location, miles).merge(with_skills_and_styles(skills, styles))
+  end)
 
   def to_param
     "#{id}-#{name.parameterize}"
