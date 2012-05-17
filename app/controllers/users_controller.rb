@@ -32,8 +32,37 @@ class UsersController < ApplicationController
   def update
     @user = current_user
 
+    # XXX optimize later, because this is retarded (excuse: demo-day)
+
+    # splits out style/skills for regeneration 
+    user_params = params[:user].except(:styles).except(:skills)
+    rest = params[:user].slice(:styles, :skills)
+
+    # update skills/styles by destroying all and regenerating them
+    @user.styles.destroy_all
+    @user.skills.destroy_all
+
+    updated = @user.update_attributes(user_params)
+    if updated 
+      styles_param = params[:user][:styles]
+      if styles_param
+        styles_param.split(',').each do |style_id|
+          ps = PersonalStyle.create(style: Style.find_by_id(style_id),
+                                    user: @user)
+        end
+      end
+      if
+        skills_param = params[:user][:skills]
+        skills_param.split(',').each do |skill_id|
+          ps = PersonalSkill.create(skill: Skill.find_by_id(skill_id),
+                                    user: @user,
+                                    expertise_level: 2)
+        end
+      end
+    end
+
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+      if updated
         format.html { redirect_to @user, notice: 'Space was successfully updated.' }
         format.json { head :no_content }
       else
