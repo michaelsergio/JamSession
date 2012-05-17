@@ -24,6 +24,12 @@
   .token-input-list-facebook {
     width: auto;
   }
+
+  .contact{ 
+    img {
+      &:hover { opacity: 0.5; }
+    }
+  }
   
   .user {
     .profile_picture {
@@ -43,6 +49,9 @@
     .contact {
       float: right;
       margin-top: 20px;
+    }
+    .message {
+      margin-left: 100px;
     }
   }
 }

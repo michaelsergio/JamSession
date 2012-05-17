@@ -1,0 +1,73 @@
+$('#users').ready ->
+
+  tokenize = (selector, url) ->
+    $(selector).tokenInput(url,
+        crossDomain: false,
+        tokenValue:'name',
+        theme: 'facebook',
+        hintText: $(this).attr('placeholder'),
+        preventDuplicates: true)
+  
+  tokenizeEdit = (selector, url) ->
+    $(selector).tokenInput(url,
+      crossDomain: false,
+      theme: 'facebook',
+      preventDuplicates: true
+      prePopulate: JSON.parse($(selector).val()))
+
+
+  show_message = (in_div) ->
+    content = """
+      <label for="subject">Subject</label>
+      <input type="text" name="subject" />
+      <label for="message">Message</label>
+      <textarea class="message-body" name="body" rows="7"></textarea>
+      <br /> 
+      <input type="submit" value="Send" />
+    """
+    in_div.hide()
+    in_div.html(content)
+
+    # give content the ability to send a message
+    in_div.children('input[type=submit]').click ->
+      data =
+        id: in_div.parent().children('.hidden-id').val()
+        subject: in_div.children('input[name=subject]').val()
+        body: in_div.children('textarea[name=body]').val()
+      
+      # TODO add better validation
+      unless (data.subject and data.body)
+        return
+
+      in_div.children('input[type=submit]').click ->
+        $.ajax(
+            type: 'POST'
+            url: '/messages/send_message.js'
+            data: data
+            success: (xhr, status, err) ->
+              #make the ajax request
+              in_div.html('<p class="label label-success">Message Sent</p>')
+            error: (xhr, status, err) ->
+              in_div.html('<p class="label label-error">Failed to send message.</p>')
+
+            complete: (xhr, status) ->
+        )
+
+    in_div.slideDown()
+    in_div.animate('color':'yellow', 1000)
+
+
+  $('.contact').click ->
+    message = $(this).parent().children(".message")
+    if message.children().size() == 0
+      show_message(message)
+    else
+      message.slideUp(400, ->
+        message.empty())
+
+  tokenize('#filter #search-skills', '/skills.json')
+  tokenize('#filter #search-styles', '/styles.json')
+
+  # TODO these should have value be thier id, not thier name
+  tokenizeEdit('.edit_user #search-styles', '/styles.json')
+  tokenizeEdit('.edit_user #search-skills', '/skills.json')
