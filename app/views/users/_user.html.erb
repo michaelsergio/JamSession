@@ -1,4 +1,5 @@
 <div class="user">
+  <div class="map-letter"> <%= iToAZ user_counter %></div>
   <span class="profile_picture">
     <% unless user.profile_picture.nil? %>
       <%= image_tag user.profile_picture.url(:thumb) %>
