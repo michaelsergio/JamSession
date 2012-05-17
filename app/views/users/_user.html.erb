@@ -1,9 +1,6 @@
 <div class="user">
-<<<<<<< HEAD
   <div class="map-letter"> <%= iToAZ user_counter %></div>
-=======
   <input id="user-<%= user.id %>" class="hidden-id" type="hidden" value="<%= user.id %>" />
->>>>>>> ajax_message
   <span class="profile_picture">
     <% unless user.profile_picture.nil? %>
       <%= image_tag user.profile_picture.url(:thumb) %>
