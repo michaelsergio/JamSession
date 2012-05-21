@@ -20,12 +20,15 @@ Make sure filters are working properly
 Walk through user creation process
 
 Sign up google maps api key
-=======
 Add Param String for users
 miles parameters for location search
 Walk through user creation process
 map indicator on search results i.e.(A B C)
 Get email setup
+
+Walk through user creation process
+
+Sign up google maps api key
 Get Amazon S3 Setup
 Push to heroku
 

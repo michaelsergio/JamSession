@@ -8,11 +8,12 @@
       
       <p>
       <%= label_tag :styles, "Styles" %> <br />
-      <%= text_field_tag :styles, "",  id: 'search-styles' %>
+      <%= text_field_tag :styles, "",  id: 'search-styles', value: token_input(@styles) %>
       </p>
       <p>
       <%= label_tag :skills, "Skills" %> <br />
-      <%= text_field_tag :skills, "", placeholder:"e.g. Guitar, Drums, Vocals",  id: 'search-skills' %>
+      <%= text_field_tag :skills, "", placeholder:"e.g. Guitar, Drums, Vocals",
+                          id: 'search-skills', value: token_input(@skills) %>
       </p>
 
       <br />

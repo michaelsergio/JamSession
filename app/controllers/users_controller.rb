@@ -73,8 +73,8 @@ class UsersController < ApplicationController
   end
 
   def search 
-    @instruments = params[:instruments] || []
-    @styles = params[:styles] || []
+    @skills = params[:skills].to_s.split(',')
+    @styles = params[:styles].to_s.split(',')
 
     @location = params[:location] || request.location
     if Rails.env.development? and !params[:location]
@@ -82,17 +82,15 @@ class UsersController < ApplicationController
     end
 
     @miles = params[:miles] || 20
-      
-# testing while i have lack of internet access
-    @users = User
-                  .joins(:skills)
-                  .paginate(page: params[:page], per_page: 25)
-=begin
-    @users = User.near(@location, @miles).
-                  by_styles(@styles).
-                  by_instruments(@instruments).
-                  with_skills_and_styles.
-                  paginate(page: params[:page], per_page: 25)
-=end
+
+    @users = User.near(@location, @miles)
+                 .by_skills(@skills)
+                 .by_styles(@styles)
+                 .paginate(page: params[:page], per_page: 25)
+
+
+    # clean up for javascript tags
+    @skills = @skills.map { |name| Skill.find_by_name(name) }
+    @styles = @styles.map { |name| Style.find_by_name(name) }
   end
 end

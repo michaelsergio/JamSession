@@ -34,33 +34,34 @@ class User < ActiveRecord::Base
     end
   end
 
-  scope :with_skills_and_styles, (lambda do
-    User.includes(skills: :personal_skills).includes(styles: :personal_styles)
-  end)
-
-  scope :by_instruments, (lambda do |instruments|
-    unless instruments.nil? or instruments.empty?
-      User.joins(:skills).where(name: instruments)
+  def self.by_skills(skills)
+    if skills.nil? or skills.empty?
+      scoped
+    else
+      joins(:skills).
+      where('skills.name'=> skills).
+      group("users.id").
+      having("COUNT(skills.id) >= ?", skills.length)
     end
-  end)
-  
-  scope :by_styles, (lambda do |styles|
-    unless styles.nil? or styles.empty?
-      User.joins(:styles).where(name: styles)
-    end
-#User.where('user.proficiencies.skill in ?', styles) unless styles.nil? or styles.empty?
-  end)
-
-
-  def token_input_skills 
-    (self.skills.map {|s| { name: s.name, id: s.id } }).to_json
   end
 
-  def token_input_styles 
-    (self.styles.map {|s| { name: s.name, id: s.id} }).to_json
+  def self.by_styles(styles)
+    if styles.nil? or styles.empty?
+      scoped
+    else
+      joins(:styles).
+      where('styles.name'=> styles).
+      group("users.id").
+      having("COUNT(styles.id) >= ?", styles.length)
+    end
   end
+
+  scope :nearby_with_skills_and_styles, (lambda do |skills, styles, location, miles|
+      #TODO currently broken
+      near(location, miles).merge(with_skills_and_styles(skills, styles))
+  end)
 
   def to_param
-    "#{id}-#{name.parameterize}"
+    "#{id}-s#{name.parameterize}"
   end
 end
