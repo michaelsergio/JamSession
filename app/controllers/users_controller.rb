@@ -84,8 +84,9 @@ class UsersController < ApplicationController
     @miles = params[:miles] || 20
       
 # testing while i have lack of internet access
-    @users = User.
-                  paginate(page: params[:page], per_page: 25)
+    @users = User
+                  .joins(:skills)
+                  .paginate(page: params[:page], per_page: 25)
 =begin
     @users = User.near(@location, @miles).
                   by_styles(@styles).

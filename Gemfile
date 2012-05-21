@@ -16,6 +16,7 @@ gem 'geocoder'
 
 # frontend
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'twitter-bootstrap-rails'
 gem 'will_paginate'
 gem 'simple_form'
@@ -29,6 +30,7 @@ end
 group :development do 
   gem 'guard-rspec'
   gem 'guard-livereload'
+  gem 'hirb'
 end
 
 # Gems used only for assets and not required
@@ -41,7 +43,7 @@ group :assets do
   gem 'therubyracer', :platform => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'jquery-ui-rails'
+
 end
 
 
