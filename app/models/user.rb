@@ -34,28 +34,26 @@ class User < ActiveRecord::Base
     end
   end
 
-  def oh_god
-    a = %{ SELECT * FROM users, personal_skills, skills 
-           WHERE users.id = personal_skills.user_id 
-           AND personal_skills.skill_id = skills.id }
-    b= ActiveRecord::Base.connection.execute(a)
-
-  end
-  scope :with_skills_and_styles, (lambda do |skills, styles|
-#by_skills(skills).merge(by_styles(styles)) 
-  end)
-
   def self.by_skills(skills)
-    unless skills.nil? or skills.empty?
-      scoped = includes(:skills)
-      skills.each do |skill|
-        scoped.merge(where('skills.name' => skill))
-      end
+    if skills.nil? or skills.empty?
+      scoped
+    else
+      joins(:skills).
+      where('skills.name'=> skills).
+      group("users.id").
+      having("COUNT(skills.id) >= ?", skills.length)
     end
   end
 
   def self.by_styles(styles)
-    includes(:styles).where('styles.name'=> styles) unless styles.nil? or styles.empty?
+    if styles.nil? or styles.empty?
+      scoped
+    else
+      joins(:styles).
+      where('styles.name'=> styles).
+      group("users.id").
+      having("COUNT(styles.id) >= ?", styles.length)
+    end
   end
 
   scope :nearby_with_skills_and_styles, (lambda do |skills, styles, location, miles|
@@ -64,6 +62,6 @@ class User < ActiveRecord::Base
   end)
 
   def to_param
-    "#{id}-#{name.parameterize}"
+    "#{id}-s#{name.parameterize}"
   end
 end

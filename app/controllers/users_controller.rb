@@ -73,8 +73,8 @@ class UsersController < ApplicationController
   end
 
   def search 
-    @skills = params[:skills].split(',') || []
-    @styles = params[:styles].split(',') || []
+    @skills = params[:skills].to_s.split(',')
+    @styles = params[:styles].to_s.split(',')
 
     @location = params[:location] || request.location
     if Rails.env.development? and !params[:location]
@@ -82,14 +82,14 @@ class UsersController < ApplicationController
     end
 
     @miles = params[:miles] || 20
-    
-    @users = User
+
+    @users = User.near(@location, @miles)
                  .by_skills(@skills)
+                 .by_styles(@styles)
                  .paginate(page: params[:page], per_page: 25)
-#.with_skills_and_styles(@skills, @styles)
-#                .near(@location, @miles)
 
 
+    # clean up for javascript tags
     @skills = @skills.map { |name| Skill.find_by_name(name) }
     @styles = @styles.map { |name| Style.find_by_name(name) }
   end

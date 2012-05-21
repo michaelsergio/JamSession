@@ -30,6 +30,7 @@ end
 group :development do 
   gem 'guard-rspec'
   gem 'guard-livereload'
+  gem 'hirb'
 end
 
 # Gems used only for assets and not required
