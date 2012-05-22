@@ -5,6 +5,9 @@
 #users {
   margin-top: 15px;
 
+  .map{
+    max-width: 100%;
+  }
   .map-letter{
     text-align: center;
     width: 20px; 
@@ -19,7 +22,11 @@
   }
 
   #filter {
-    background: hsl(200, 27, 68)
+    background: hsl(200, 27, 68);
+
+    #filter-btn{
+      text-align: center;
+    }
   }
   .token-input-list-facebook {
     width: auto;
@@ -30,6 +37,10 @@
       &:hover { opacity: 0.5; }
     }
   }
+  .users {
+    background-color: #97B5C3;
+    margin-top: 10px;
+  }
   
   .user {
     .profile_picture {
@@ -38,6 +49,7 @@
     .information {
       display: inline-block;
       padding-top: 10px;
+      padding-left:5px;
 
       .name {
         font-weight: bold;

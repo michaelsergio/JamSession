@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row-fluid">
   <div class="span3" id="filter">
     <div class="filter">Filter</div>
     <%= form_tag(search_users_path, method: :get, class: 'form-vertical') do %>
@@ -17,10 +17,12 @@
       </p>
 
       <br />
-      <%= submit_tag "Filter"%>
+      <div id="filter-btn">
+        <%= submit_tag "Filter", class: "btn btn-primary btn-large"%>
+      </div>
     <% end %>
   </div>
-  <div class="span7">
+  <div class="span6">
   <%= map_tag @location, @users %>
   
   <div class="users">

@@ -10,7 +10,7 @@ module ApplicationHelper
       "&markers=color:blue%7Clabel:#{iToAZ(i)}%7C#{item.latitude}%2C#{item.longitude}"
     end
 
-    image_tag MAP_URL + "&size=#{size}#{markers.join}#{center}"
+    image_tag MAP_URL + "&size=#{size}#{markers.join}#{center}", class: 'map'
   end
 
 
