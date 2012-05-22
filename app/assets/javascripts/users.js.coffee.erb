@@ -1,20 +1,25 @@
 $('#users').ready ->
-
   tokenize = (selector, url) ->
-    $(selector).tokenInput(url,
-        crossDomain: false,
-        tokenValue:'name',
-        theme: 'facebook',
-        hintText: $(this).attr('placeholder'),
-        preventDuplicates: true)
-  
-  tokenizeEdit = (selector, url) ->
-    $(selector).tokenInput(url,
-      crossDomain: false,
-      theme: 'facebook',
-      preventDuplicates: true
-      prePopulate: JSON.parse($(selector).val()))
+    div = $(selector)
+    if div.length > 0
+      val = div.val()
+      div.tokenInput(url,
+          crossDomain: false,
+          tokenValue:'name',
+          theme: 'facebook',
+          hintText: div.attr('placeholder'),
+          preventDuplicates: true,
+          prePopulate: (if val == "" then "" else JSON.parse(val)))
 
+  tokenizeEdit = (selector, url) ->
+    div = $(selector)
+    if div.length > 0
+      val = div.val()
+      div.tokenInput(url,
+        crossDomain: false,
+        theme: 'facebook',
+        preventDuplicates: true,
+        prePopulate: (if val == "" then "" else JSON.parse(val)))
 
   show_message = (in_div) ->
     content = """
