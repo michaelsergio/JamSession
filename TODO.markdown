@@ -18,6 +18,7 @@ User Profile - rearrange profile page html/css
 Messaging - send email notification upon a new message sent
 User Settings - be able to disable email notiications
 
+User - Remove ability to destroy Users
 
 
 Get one coversation going

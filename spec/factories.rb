@@ -4,7 +4,7 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password "password"
     password_confirmation "password"
-    styles {|styles| [styles.association(:personal_style)] }
+#styles {|styles| [styles.association(:personal_style)] }
   end
 
   factory :style do
