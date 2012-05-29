@@ -10,6 +10,7 @@ gem 'sqlite3'
 
 # backend
 gem 'devise'
+gem 'cancan'
 gem 'paperclip'
 gem 'acts-as-messageable'
 gem 'geocoder'

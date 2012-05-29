@@ -1,36 +1,43 @@
+Things that must happen before launch
+----------------------------------------
+Get real missing-picture icon for user image
+Get images without whitespace
+Regenerate Key and hide from git repo
+
 Priority Things To Finish
 -----------------------------
-read and unread messages needs to implemented
-New message numbers on notifications bar
+User Profile - remove authentication from UserController#show
+
+User Search, logged out - When contact is clicked, suggest login
+
+Messaging - read and unread messages needs to implemented
+Header, logged in - New message numbers on notifications bar
+
+User Profile - rearrange profile page html/css
+
+Messaging - send email notification upon a new message sent
+User Settings - be able to disable email notiications
+
+
 
 Get one coversation going
-reply to message in inbox/sent/all`
+reply to message in inbox/sent/all
 Send message from the search results page
-
-Clean up user page html
-
-Contact that turns into compose box via JS. Search Page
 
 FAKE SKILLS & STYLES BY PREDEFINING LIST
 Ability to add styles user profile
 Ability to add skills on user profile
 
-Make sure filters are working properly
+Fix filters so that they are working properly
 
 Walk through user creation process
 
-Sign up google maps api key
-Add Param String for users
-miles parameters for location search
-Walk through user creation process
-map indicator on search results i.e.(A B C)
-Get email setup
+Sign up google maps api key and sign "near" requests with key
 
-Walk through user creation process
-
-Sign up google maps api key
 Get Amazon S3 Setup
+tag 0.1 and patch to remove spaces from home page and routes
 Push to heroku
+
 
 extra
 --------
@@ -38,8 +45,6 @@ Add miles to search location
 user reviews
 set expierence on skills
 Get email setup
-
-
 
 
 Add Styles
@@ -61,13 +66,7 @@ Writes Test For
 * styles
 * skills
 
-Blank location should be anywhere
 
 Test User Messaging system
 Test location miles away
-
-Styling for 
------------
-* Artist Profile Page
-
 
