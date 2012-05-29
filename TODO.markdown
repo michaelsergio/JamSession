@@ -6,14 +6,13 @@ Regenerate Key and hide from git repo
 
 Priority Things To Finish
 -----------------------------
-User Profile - remove authentication from UserController#show
+User Profile - rearrange profile page html/css
 
 User Search, logged out - When contact is clicked, suggest login
 
 Messaging - read and unread messages needs to implemented
 Header, logged in - New message numbers on notifications bar
 
-User Profile - rearrange profile page html/css
 
 Messaging - send email notification upon a new message sent
 User Settings - be able to disable email notiications
