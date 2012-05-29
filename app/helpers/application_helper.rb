@@ -24,4 +24,16 @@ module ApplicationHelper
     end
   end
 
+  def new_messages_tag
+    new_count = current_user.received_messages.unread.count
+    text = "Messages"
+    
+    if new_count > 0
+      styles = ["badge", "badge-info", "new-messages"]
+      text = "#{new_count} New Messages"
+    end
+
+    content_tag(:span, link_to(text, inbox_messages_path), class: styles)
+  end
+
 end

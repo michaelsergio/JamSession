@@ -23,6 +23,7 @@ Jamsession::Application.routes.draw do
   resources :messages do
     member do 
       post 'reply'
+      post 'mark'
     end
     collection do
       get 'all'

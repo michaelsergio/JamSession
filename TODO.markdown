@@ -12,9 +12,11 @@ User Search, logged out - When contact is clicked, suggest login
 Messaging - read and unread messages needs to implemented
 Header, logged in - New message numbers on notifications bar
 
+Messaging - send mail from message partial
 
 Messaging - send email notification upon a new message sent
 User Settings - be able to disable email notiications
+User Settings - check to make sure that hide from listings work (default-scope)
 
 User - Remove ability to destroy Users
 
