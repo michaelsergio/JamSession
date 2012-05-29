@@ -2,6 +2,7 @@ Things that must happen before launch
 ----------------------------------------
 Get real missing-picture icon for user image
 Get images without whitespace
+Change Home page image
 Regenerate Key and hide from git repo
 
 Priority Things To Finish
