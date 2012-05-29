@@ -1,46 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div id="show">
+<div class="row-fluid">
+  <div class="span6">
 
-<% unless @user.profile_picture.nil? %>
-  <%= image_tag @user.profile_picture.url(:thumb) %>
-<% end %>
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
+    <div class="name">
+      <%= @user.name %>
+    </div>
 
-<p>
-  <b>Location:</b>
-  <%= @user.location %>
-  <br />
-  <%= map_tag_for_user(@user) %>
-</p>
+    <div class="profile_picture">
+      <% unless @user.profile_picture.nil? %>
+        <%= image_tag @user.profile_picture.url(:medium) %>
+      <% end %>
+    </div>
 
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-<p>
+    <% if current_user == @user %>
+      <%= link_to 'Edit', edit_user_path(@user) %> |
+    <% end %>
 
-<p>
-  <b>About:</b>
-  <%= @user.about %>
-</p>
-<p>
+    <div class="skills">
+     <p><b>Skills:</b> <%= @user.skills.map(&:name).join(", ") %> </p>
+    </div>
+    <div class="styles">
+     <p>
+     <b>Styles:</b> <%= @user.styles.map(&:name).join(', ') %>
+     </p>
+    </div>
 
 
-<div class="skills">
- <p><b>Skills:</b> <%= @user.skills.map(&:name).join(", ") %> </p>
+    <p>
+      <b>About:</b>
+      <%= @user.about %>
+    </p>
+    <p>
+  </div>
+
+  
+    <div class="span6">
+      <b>Location:</b>
+      <%= @user.location %>
+      <br />
+        <%= map_tag_for_user(@user) %>
+    </div>
 </div>
-<div class="styles">
- <p>
- <b>Styles:</b> <%= @user.styles.map(&:name).join(', ') %>
- </p>
 </div>
-
-
-<% if current_user == @user %>
-  <%= link_to 'Edit', edit_user_path(@user) %> |
-<% end %>
-
-
-<%= link_to 'Back', users_path %>
