@@ -62,6 +62,6 @@ class User < ActiveRecord::Base
   end)
 
   def to_param
-    "#{id}-s#{name.parameterize}"
+    "#{id}-#{name.parameterize}"
   end
 end
