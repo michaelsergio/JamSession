@@ -6,8 +6,6 @@ Regenerate Key and hide from git repo
 
 Priority Things To Finish
 -----------------------------
-User Profile - rearrange profile page html/css
-
 User Search, logged out - When contact is clicked, suggest login
 
 Messaging - read and unread messages needs to implemented
