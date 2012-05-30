@@ -14,6 +14,7 @@
       </span>
       <span id="signin">
         <% if user_signed_in? %>
+          <input id="currently-signed-in" type="hidden" />
           <%= new_messages_tag %> |
           <%= link_to "Profile", edit_user_path(current_user) %>  | 
           <%= link_to "Logout", destroy_user_session_path, method: :delete %>

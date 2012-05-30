@@ -62,13 +62,17 @@ $('#users').ready ->
     in_div.animate('color':'yellow', 1000)
 
 
-  $('.contact').click ->
-    message = $(this).parent().children(".message")
-    if message.children().size() == 0
-      show_message(message)
-    else
-      message.slideUp(400, ->
-        message.empty())
+  if $('#currently-signed-in').length > 0
+    $('.contact').click ->
+      message = $(this).parent().children(".message")
+      if message.children().size() == 0
+        show_message(message)
+      else
+        message.slideUp(400, ->
+          message.empty())
+  else
+    $('.contact').tooltip(title: "Log In To Contact")
+
 
   tokenize('#filter #search-skills', '/skills.json')
   tokenize('#filter #search-styles', '/styles.json')
