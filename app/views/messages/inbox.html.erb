@@ -1,8 +1,10 @@
 <div class="sent-mail-header">
   <h1>Inbox</h1>
+  <%= link_to "See Sent Messages", sent_messages_path  %>
 </div>
 <% if @messages.empty? %>
   <h2>No new messages</h2>
 <% else %>
   <%= render partial: 'message', collection: @messages %>
+  <%= will_paginate @messages %>
 <% end %>

@@ -1,16 +1,32 @@
-<div class="message <%= message_counter.odd? ? "odd" : "even" %>" >
-  <div class="picture"><%= image_tag other_guys_picture message %></div>
-  <div class="status"><%= message.opened ? "Read" : "Unread" %></div>
-  <div class="name">From: <%= message.from.name %></div>
-  <div class="name">To: <%= message.to.name %></div>
-  <div class="sent">Sent <%= time_ago_in_words message.created_at %> ago</div>
-  <div class="topic"><%= message.topic %></div>
-  <div class="body"><%= message.body %></div>
-  <div class="btn btn-primary reply-btn">Reply</div>
-  <div class="reply">
-    <form action="<%=reply_message_path(message)%>" method="POST">
-      <input id="reply" name="reply" type="text-area" />
-      <input type="submit" value="Reply" />
-    </form>
+<div class="message" >
+  <div class="inside">
+    <div class="picture"><%= image_tag other_guys_picture message %></div>
+    <%= new_tag message %>
+    <div class="name">From: <%= link_to message.from.name, message.from %></div>
+    <div class="name">To: <%= link_to message.to.name, message.to%></div>
+    <div class="sent">Sent <%= time_ago_in_words message.created_at %> ago</div>
+    <div class="topic"><%= message.topic %></div>
+    <div class="body"><%= message.body %></div>
   </div>
+
+  <div class="reply-side">
+    <div class="btn btn-primary reply-btn">Reply</div>
+    <div class="reply">
+      <% if message.to == current_user %>
+        <form action="<%=reply_message_path(message)%>" method="POST" class="reply-form">
+      <% else %>
+        <form action="<%=send_message_messages_path %>" method="POST" class="reply-form">
+        <input name="id" value="<%= message.to.id %>" type="hidden" />
+      <% end %>
+        <input name="subject" value="<%= message.topic %>" type="hidden" />
+        <textarea id="reply" name="body"></textarea>
+        <br />
+        <input type="submit" value="Reply" />
+        <%= token_tag(nil) %>
+      </form>
+    </div>
+  </div>
+
+<hr />
 </div>
+

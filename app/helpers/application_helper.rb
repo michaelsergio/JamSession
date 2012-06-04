@@ -24,4 +24,26 @@ module ApplicationHelper
     end
   end
 
+  def new_messages_tag
+    new_count = current_user.received_messages.unread.count
+    text = "Messages"
+    
+    if new_count > 0
+      styles = ["badge", "badge-info", "new-messages"]
+      text = "#{new_count} New Messages"
+    end
+
+    content_tag(:span, link_to(text, inbox_messages_path), class: styles)
+  end
+
+  def show_flash
+    [:notice, :error, :warning].collect do |key|
+      flash_class = "alert-info" if key == :notice
+      flash_class = "alert-error" if key == :error
+      flash_class = "" if key == :warning
+
+      content_tag(:div, flash[key], :id => key, 
+          :class => "alert #{flash_class}") unless flash[key].blank?
+    end.join
+  end
 end

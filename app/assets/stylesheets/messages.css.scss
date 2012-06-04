@@ -12,19 +12,29 @@
     .picture{
       float:left;
       margin-right: 5px;
+      img {
+        width: 100px;
+        height: 100px;
+      }
 
     }
     .name{ 
       font-weight: bold;
     }
-    .status{}
+    .status{
+    }
     .topic{
       font-weight: bold;
     }
     .body{}
-    .sent{}
+    .sent{
+      float: right;
+    }
+    .reply-form {
+      margin-top: 10px;
+    }
     .reply {
-      visibility: hidden;
+      display: none; 
     }
   }
 }

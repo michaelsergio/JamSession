@@ -4,6 +4,12 @@ body {
 }
 
 #header {
+  .new-messages{
+    color:white;
+    a:visited {
+      color:white;
+    }
+  }
   #logo {
     img {
       max-width: 100px;

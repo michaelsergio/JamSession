@@ -4,8 +4,6 @@
     <%= form_tag(search_users_path, method: :get, class: 'form-vertical') do %>
       <%= label_tag :location, "Location" %>
       <%= search_field_tag :location, @location,  placeholder: 'Enter Zip or City' %>
-
-      
       <p>
       <%= label_tag :styles, "Styles" %> <br />
       <%= text_field_tag :styles, "",  id: 'search-styles', value: token_input(@styles) %>
