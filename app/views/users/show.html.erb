@@ -4,6 +4,10 @@
 
     <div class="name">
       <%= @user.name %>
+      <% if current_user == @user %>
+        <br />
+        <%= link_to 'Edit Profile', edit_user_path(@user) %> 
+      <% end %>
     </div>
 
     <div class="profile_picture">
@@ -12,9 +16,6 @@
       <% end %>
     </div>
 
-    <% if current_user == @user %>
-      <%= link_to 'Edit', edit_user_path(@user) %> |
-    <% end %>
 
     <div class="skills">
      <p><b>Skills:</b> <%= @user.skills.map(&:name).join(", ") %> </p>
