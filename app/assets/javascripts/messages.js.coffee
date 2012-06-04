@@ -1,3 +1,3 @@
 $('#messages').ready ->
   $('.reply-btn').click ->
-    $('.reply').slideDown()
+    $(this).parent().children('.reply').slideToggle()

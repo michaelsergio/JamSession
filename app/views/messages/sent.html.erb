@@ -1,5 +1,6 @@
 <div class="sent-mail-header">
-  <h1>Sent Mail</h1>
+  <h1>Sent Messages</h1>
+  <%= link_to "See Inbox", inbox_messages_path  %>
 </div>
 <% if @messages.empty? %>
   <h2>No sent messages</h2>

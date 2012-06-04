@@ -1,7 +1,10 @@
 module MessagesHelper
-  def other_guys_picture(message)
+  def other_guy(message)
       user = message.from == current_user ? message.to : message.from
-      user.profile_picture.url(:thumb)
+  end
+
+  def other_guys_picture(message)
+      other_guy(message).profile_picture.url(:thumb)
   end
 
   def new_tag(message)

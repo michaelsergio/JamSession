@@ -3,14 +3,17 @@ class MessagesController < ApplicationController
 
   def all
     @messages = current_user.messages
+                            .paginate(page: params[:page], per_page: 10)
   end
 
   def inbox
     @messages = current_user.received_messages
+                            .paginate(page: params[:page], per_page: 10)
   end
 
   def sent
     @messages = current_user.sent_messages
+                            .paginate(page: params[:page], per_page: 10)
   end 
 
   def show
@@ -29,7 +32,7 @@ class MessagesController < ApplicationController
   def reply
     message = current_user.received_messages.find(params[:id])
     message.reply(topic: params[:subject], body: params[:body])
-    
+    redirect_to :back, notice: "Reply sent to #{message.to.name}"
   end
 
   def send_message

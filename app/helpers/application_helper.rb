@@ -36,4 +36,14 @@ module ApplicationHelper
     content_tag(:span, link_to(text, inbox_messages_path), class: styles)
   end
 
+  def show_flash
+    [:notice, :error, :warning].collect do |key|
+      flash_class = "alert-info" if key == :notice
+      flash_class = "alert-error" if key == :error
+      flash_class = "" if key == :warning
+
+      content_tag(:div, flash[key], :id => key, 
+          :class => "alert #{flash_class}") unless flash[key].blank?
+    end.join
+  end
 end

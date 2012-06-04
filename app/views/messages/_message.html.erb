@@ -12,10 +12,17 @@
   <div class="reply-side">
     <div class="btn btn-primary reply-btn">Reply</div>
     <div class="reply">
-      <form action="<%=reply_message_path(message)%>" method="POST">
+      <% if message.to == current_user %>
+        <form action="<%=reply_message_path(message)%>" method="POST" class="reply-form">
+      <% else %>
+        <form action="<%=send_message_messages_path %>" method="POST" class="reply-form">
+        <input name="id" value="<%= message.to.id %>" type="hidden" />
+      <% end %>
         <input name="subject" value="<%= message.topic %>" type="hidden" />
-        <input id="reply" name="body" type="text-area" />
+        <textarea id="reply" name="body"></textarea>
+        <br />
         <input type="submit" value="Reply" />
+        <%= token_tag(nil) %>
       </form>
     </div>
   </div>
