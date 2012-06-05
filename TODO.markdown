@@ -11,7 +11,6 @@ Messaging - send email notification upon a new message sent
 User Settings - be able to disable email notiications
 User Settings - check to make sure that hide from listings work (default-scope)
 
-User - Remove ability to destroy Users
 User, Search - Make location box longer
 
 
