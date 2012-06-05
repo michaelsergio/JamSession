@@ -4,11 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :name, :location, :hide_location_from_search, :about
-
-  has_attached_file :profile_picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   attr_accessible  :profile_picture
 
   validates_presence_of :name
@@ -22,17 +19,14 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :personal_styles
 
   acts_as_messageable
-
   geocoded_by :location
-  after_validation :geocode
-  before_save :clear_location
+  has_attached_file :profile_picture, 
+                    styles: { :medium => "300x300>", :thumb => "100x100>" }
 
-  def clear_location 
-    if self.hide_location_from_search
-      self.latitude = nil
-      self.longitude = nil
-    end
-  end
+  before_save :clear_location
+  after_validation :geocode
+
+  default_scope where(hide_location_from_search: false)
 
   def self.by_skills(skills)
     if skills.nil? or skills.empty?
@@ -56,10 +50,13 @@ class User < ActiveRecord::Base
     end
   end
 
-  scope :nearby_with_skills_and_styles, (lambda do |skills, styles, location, miles|
-      #TODO currently broken
-      near(location, miles).merge(with_skills_and_styles(skills, styles))
-  end)
+
+  def clear_location 
+    if self.hide_location_from_search
+      self.latitude = nil
+      self.longitude = nil
+    end
+  end
 
   def to_param
     "#{id}-#{name.parameterize}"
