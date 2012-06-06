@@ -3,14 +3,19 @@ namespace :db do
   task popSS: :environment do
     up_styles
     up_skills
+
+    puts "Instruments and Styles Populuated"
+    puts "Complete"
   end
 
   task popSkills: :environment do 
     up_skills
+    puts "Complete"
   end
   
   task popStyles: :environment do 
     up_styles
+    puts "Complete"
   end
 
   def up_styles
@@ -20,11 +25,9 @@ namespace :db do
     File.open(file, 'r').each do |line|
       i = i + 1
       Style.find_or_create_by_name(line)
-      print "Line #{i}"
+      print "\rLine #{i}"
     end
-    puts "Styles Complete"
-
-    puts "Instruments and Styles Populuated"
+    puts "\nStyles Complete"
   end
   
   def up_skills
@@ -34,8 +37,8 @@ namespace :db do
     File.open(file, 'r').each do |line|
       i = i + 1
       Skill.find_or_create_by_name(line)
-      print "Line #{i}"
+      print "\rLine #{i}"
     end
-    puts "Instruments Complete"
+    puts "\nInstruments Complete"
   end
 end
