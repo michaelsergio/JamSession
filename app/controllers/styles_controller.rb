@@ -27,7 +27,12 @@ class StylesController < ApplicationController
   end
 
   def index
-    @styles = Style.all
+    if params[:q]
+      #FIXME SQL INJECTION RISK
+      @styles = Style.where("upper(name) LIKE upper('%#{params[:q]}%')")
+    else
+      @styles = Style.all
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @styles }
